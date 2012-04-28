@@ -13,6 +13,9 @@
 // --------------------------------------------------------------
 define('LARAVEL_START', microtime(true));
 define('WEBROOT', '/mnt/www/chatkeeda.priyolahiri.co.cc');
+define ('PUSHERKEY', '');
+define ('PUSHERSECRET', '');
+define ('PUSHERAPPID', '');
 
 // --------------------------------------------------------------
 // Indicate that the request is from the web.
