@@ -2,128 +2,106 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-
-		<title>Laravel - A Framework For Web Artisans</title>
-
-		<style>
-			@import url(http://fonts.googleapis.com/css?family=Ubuntu);
-
-			body {
-				background: #eee;
-				color: #6d6d6d;
-				font: normal normal normal 14px/1.253 Ubuntu, sans-serif;
-				margin: 0 0 25px 0;
-				min-width: 800px;
-				padding: 0;
-			}
-
-			#main {
-				background-clip: padding-box;
-				background-color: #fff;
-				border:1px solid #ccc;
-				border-radius: 5px;
-				box-shadow: 0 0 10px #cdcdcd;
-				margin: 25px auto 0;
-				padding: 30px;
-				width: 700px;
-				position: relative;
-			}
-
-			#main h1 {
-				font-family: 'Ubuntu';
-				font-size: 38px;
-				letter-spacing: 2px;
-				margin: 0 0 10px 0;
-				padding: 0;
-			}
-
-			#main h2 {
-				color: #999;
-				font-size: 18px;
-				letter-spacing: 3px;
-				margin: 0 0 25px 0;
-				padding: 0 0 0 0;
-			}
-
-			#main h3 {
-				color: #999;
-				margin-top: 24px;
-				padding: 0 0 0 0;
-			}
-
-			#main h3 {
-				font-size: 18px;
-			}
-
-			#main p {
-				line-height: 25px;
-				margin: 10px 0;
-			}
-
-			#main pre {
-				background-color: #333;
-				border-left: 1px solid #d8d8d8;
-				border-top: 1px solid #d8d8d8;
-				border-radius: 5px;
-				color: #eee;
-				padding: 10px;
-			}
-
-			#main div.warning {
-				background-color: #feefb3;
-				border: 1px solid;
-				border-radius: 5px;
-				color: #9f6000;
-				padding: 10px;
-			}
-
-			#main ul {
-				margin: 10px 0;
-				padding: 0 30px;
-			}
-
-			#main li {
-				margin: 5px 0;
-			}
-		</style>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="/css/custom.css" media="all" />
+		<title>Jscore | Home</title>
 	</head>
 	<body>
-		<div id="main">
-			<h1>Welcome To Laravel</h1>
-
-			<h2>A Framework For Web Artisans</h2>
-
-			<p>
-				You have successfully installed the Laravel framework. Laravel is a simple framework
-				that helps web artisans create beautiful, creative applications using elegant, expressive
-				syntax. You'll love using it.
-			</p>
-
-			<h3>Learn the terrain.</h3>
-
-			<p>
-				You've landed yourself on our default home page. The route that
-				is generating this page lives at:
-			</p>
-
-			<pre><code>APP_PATH/routes.php</code></pre>
-
-			<p>And the view sitting before you can be found at:</p>
-
-			<pre><code>APP_PATH/views/home/index.php</code></pre>
-
-			<h3>Create something beautiful.</h3>
-
-			<p>
-				Now that you're up and running, it's time to start creating!
-				Here are some links to help you get started:
-			</p>
-
-			<ul>
-				<li><a href="http://laravel.com">Official Website</a></li>
-				<li><a href="http://forums.laravel.com">Laravel Forums</a></li>
-				<li><a href="http://github.com/laravel/laravel">GitHub Repository</a></li>
-			</ul>
+		<!-- Page Container Begin -->
+		<div class="container" id="page">
+			<!-- Header Begin -->
+			<div class="row" id="header">
+				<div class="span12" id="logo">
+					Logo
+				</div>
+			</div>
+			<!-- Header End -->
+			<!-- Body Begin -->
+			<div class="row" id="body">
+				<!-- Content Begin -->
+				<div class="span9" id="content">
+					<!-- Content Inner Begin -->
+					<div id="content_inner" class="well">
+						<ul class="breadcrumb">
+  							<li>
+    								<a href="/">Chatkeeda</a>
+    								<span class="divider">/</span>
+  							</li>
+  							<li class="active">
+    								<a href="#">Home</a>
+  							</li>
+						</ul>
+						<div class="row">
+							<div class="span4">
+								<p align="center">
+									Col 1
+								</p>
+							</div>
+							<div class="span4">
+								<p align="center">
+									Col 2
+								</p>
+							</div>
+							<div class="clear clearfix"></div>
+						</div>
+						<div class="clear clearfix"></div>
+						<hr/>
+					</div>
+					<!-- Content Inner End -->
+				</div>
+				<!-- Content End -->
+				<!-- Sidebar Begin -->
+				<div class="span3" id="sidebar">
+					<div id="sidebar_inner" class="well">
+						<form method="post" action="/user/login">
+							<div class="control-group">
+								<label class="control-label" for="email">Email address</label>
+								<div class="input-prepend">
+              						<span class="add-on"><i class="icon-envelope"></i></span>
+              						<input type="text" id="email" name="email" class="span2">
+            						</div>
+								<label class="control-label" for="password">Password</label>
+								<div class="input-prepend">
+              						<span class="add-on"><i class="icon-lock"></i></span>
+              						<input type="password" id="password" name="password" class="span2">
+            						</div>
+							</div>
+							<button class="btn btn-success" type="submit"><i class="icon-home icon-white"></i>Login</button>
+							<a class="btn btn-primary" href="/register" type="submit"><i class="icon-pencil icon-white"></i>Register</a><br/><br/>
+							<?php
+							if ($error) {
+							?>
+							<div class="alert alert-error"><?php echo($error); ?></div>
+							<?php
+							}
+							?>
+							<?php
+							if ($success) {
+							?>
+							<div class="alert alert-success"><?php echo($success); ?></div>
+							<?php
+							}
+							?>
+						</form>
+					</div>
+				</div>
+				<!-- Sidebar End -->
+				<div class="clear"></div>
+			</div>
+			<!-- Body End -->
+			<!-- Footer Begin -->
+			<div class="row" id="footer">
+				<div class="span12" id="footer_1">
+					<div id="footer_inner" class="well">
+						Footer<br/><br/><br/>	
+					</div>
+				</div>
+			</div>
+			<!-- Footer End -->	
 		</div>
+		<!-- Page Container End -->
 	</body>
 </html>
