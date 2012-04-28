@@ -7,7 +7,7 @@
 		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/custom.css" media="all" />
-		<title>Jscore | Home</title>
+		<title>ChatKeeda | Home</title>
 	</head>
 	<body>
 		<!-- Page Container Begin -->
@@ -27,7 +27,7 @@
 					<div id="content_inner" class="well">
 						<ul class="breadcrumb">
   							<li>
-    								<a href="/">Chatkeeda</a>
+    								<a href="/">ChatKeeda</a>
     								<span class="divider">/</span>
   							</li>
   							<li class="active">
