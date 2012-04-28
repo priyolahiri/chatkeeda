@@ -15,7 +15,7 @@
 			<!-- Header Begin -->
 			<div class="row" id="header">
 				<div class="span12" id="logo">
-					<img src-"http://liveuploads.s3.amazonaws.com/wp-content/uploads/2012/03/skeeda.png" alt="SportsKeeda Logo" />
+					<img src-"/img/skeeda.png" alt="SportsKeeda Logo" />
 				</div>
 			</div>
 			<!-- Header End -->
