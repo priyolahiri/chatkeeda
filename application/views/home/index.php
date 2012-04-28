@@ -15,7 +15,7 @@
 			<!-- Header Begin -->
 			<div class="row" id="header">
 				<div class="span12" id="logo">
-					<img src-"/img/skeeda.png" alt="SportsKeeda Logo" />
+					<img src="/img/skeeda.png" alt="SportsKeeda Logo" />
 				</div>
 			</div>
 			<!-- Header End -->
