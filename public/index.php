@@ -12,6 +12,7 @@
 // Tick... Tock... Tick... Tock...
 // --------------------------------------------------------------
 define('LARAVEL_START', microtime(true));
+define('WEBROOT', '/mnt/www/chatkeeda.priyolahiri.co.cc');
 
 // --------------------------------------------------------------
 // Indicate that the request is from the web.
