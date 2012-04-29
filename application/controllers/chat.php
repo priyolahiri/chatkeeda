@@ -20,7 +20,7 @@ Class Chat_Controller extends Base_Controller {
 			->with('user', $user)
 			->with('error', $error)->with('success', $success);
 		}
-		if (!Input::get('chat_name') or len(Input::get('chat_name') < 4)) {
+		if (!Input::get('chat_name') or strlen(Input::get('chat_name') < 4)) {
 			return Redirect::to('/chat/new')->with('error', "Chat name needs to be atleast four characters in length.");
 		}
 		$chat = new Chat;
