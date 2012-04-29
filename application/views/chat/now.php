@@ -66,7 +66,13 @@
 						</ul>
 						<h2><?php echo ($chat->chatinfo['name']) ?></h2>
 						<hr/>
-						
+						<div class="well" id="chat_window">
+							&nbsp;
+						</div>
+						<div class="clearfix"></div>
+						<div class="well" id="comm_window">
+							&nbsp;
+						</div>
 					</div>
 					<!-- Content Inner End -->
 				</div>
