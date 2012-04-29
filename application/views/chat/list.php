@@ -50,6 +50,7 @@
     												<th>Chat Name</th>
     												<th>Creator</th>
     												<th>Created</th>
+    												<th>End</th>
     												<th>&nbsp;</th>
     											</tr>
     										</thead>
@@ -59,7 +60,14 @@
     												echo '<tr>';
 												echo '<td>'.$item['name'].'</td>';
 												echo '<td>'.$item['creator'].'</td>';
-												echo '<td>'.date('D, jS F, Y ', $item['created']).'</td>';
+												echo '<td>'.date('D, jS F, Y ', $item['start']).'</td>';
+												echo '<td>';
+												if ($item['end'] == 0){
+													echo '--N/A--';
+												} else {
+													echo date('D, jS F, Y ', $item['end']);
+												}
+												echo '</td>';
 												echo '<td><a href="/chatnow/'.$item['slug'].'" class="btn btn-success">Go</a></td>';	
 												echo '<tr/>';
     											}
