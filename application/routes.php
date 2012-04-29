@@ -2,7 +2,7 @@
 Route::controller(array('home', 'register'));
 
 Route::post('login', function() {
-	$usertry = new User;
+	$user = new User;
 	$usertry = $user->doAuth();
 	if ($usertry['success']) {
 		return Redirect::to('/')->with('success', $usertry['msg']);
