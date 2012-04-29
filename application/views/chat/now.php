@@ -36,7 +36,7 @@
 									$('#contacts_window ul.window').append('<li>'+onlinetext+'</li>');
 									members.each(function(member) {
 										$('#contacts_window ul.window').append('<li>'+member.username+'<br/>'+member.role+'</li>');
-									}
+									});
 								});
 								channel.bind('pusher:member_added', function(member) {
 								
