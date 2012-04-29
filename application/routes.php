@@ -28,6 +28,7 @@ Route::post('chatnow/(:any)', function($slug) {
 Route::post('chatauth/(:any)', function($slug) {
 	$chat = new Chat;
 	$chat->initChat($slug);
+	$user_id = $chat->userinfo['username'];
 	$pusher = new Pusher(PUSHERKEY, PUSHERSECRET, PUSHERAPPID);
 	$presence_data = json_encode($chat->authChat());
 	return $pusher->presence_auth($_POST['channel_name'], $_POST['socket_id'], $user_id, $chat->userinfo['username']);
