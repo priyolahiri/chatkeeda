@@ -4,27 +4,27 @@ Class Chat {
 		$user = New User;
 		$this->userinfo = $user->returnUser();
 		$mongo = new Mongo(MONGOHOST);
-		$db = $mongo->chatkeeda;
-		$this->chatcoll = $db->chats;
+		$db = $mongo->chatkeeda;	
+		$this->chats = $db->chats;
 		$this->chatinfo = false;
 		$this->init = false;
 	}
 	public function newChat($name, $score = false) {
 		$slug = Str::slug($name);
 		$insert = array("name" => $name, "slug" => $slug, "creator" => $this->userinfo['username'], "admins" => json_encode(array($this->userinfo['username'])), "live" => true, "start" => time(), "end" => "");
-		$this->chatcoll->insert($insert);	
+		$this->chats->insert($insert);	
 	}
 	public function checkName($name) {
 		//$check = $this->chatcoll->findOne(array("slug" => Str::slug($name)));
 		$slug = Str::slug($name);
-		$check = $this->chatcoll->findOne(array("slug" => $slug));
+		$check = $this->chats->findOne(array("slug" => $slug));
 		if ($check) {
 			return true;
 		}
 		return false;
 	}
 	public function initChat($slug) {
-		$chatretr = $this->chatcoll->findOne(array("slug" => $slug));
+		$chatretr = $this->chats->findOne(array("slug" => $slug));
 		if ($chatretr) {
 			$this->chatinfo = $chatretr;
 			$chatid = $this->chatinfo['slug'];
