@@ -84,7 +84,8 @@ Class Chat {
 			"role" => $role,
 			"admin" => $admin,
 			"superadmin" => $superadmin,
-			"creator" => $creator
+			"creator" => $creator,
+			"user_id" => $this->userinfo['username']
 		);
 	}
 	public function listChats($live = true) {
