@@ -30,6 +30,18 @@
 						dataType: 'json',
 						success: function(data) {
 							console.log(data);
+							if (data.admin) {
+								channel.bind('pusher:subscription_succeeded', function(members) {
+									var onlinetext = members.count + ' user(s) online';
+									$('#contacts_window ul.window').append('<li>'+onlinetext+'</li>');
+									members.each(function(member) {
+										$('#contacts_window ul.window').append('<li>'+member.username+'<br/>'+member.role'</li>');
+									}
+								});
+								channel.bind('pusher:member_added', function(member) {
+								
+								});
+							}
 						},
 						error: function(data) {
 							console.log(data);
@@ -67,7 +79,7 @@
 						<h2><?php echo ($chat->chatinfo['name']) ?></h2>
 						<hr/>
 						<div class="well" id="chat_window">
-							&nbsp;
+							<ul class="window"></ul>
 						</div>
 						<div class="clearfix"></div>
 						<div class="well" id="comm_window">
@@ -85,11 +97,11 @@
 						<button id="finish_chat">Finish Chat</button>
 						<hr/>
 						<div class="well" id="contacts_window">
-							&nbsp;
+							<ul class="window"></ul>
 						</div>
 						<div class="clearfix"></div>
 						<div class="well" id="approve_window">
-							&nbsp;
+							<ul class="window"></ul>
 						</div>
 					</div>
 				</div>

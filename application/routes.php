@@ -34,7 +34,9 @@ Route::post('chatauth/(:any)', function($slug) {
 	error_log('chatauth');
 	return $pusher->presence_auth($_POST['channel_name'], $_POST['socket_id'], $chat->userinfo['username'], $presence_data);
 });
-
+Route::post('chataction/(:any)/(:any)', function($slug, $action) {
+	
+});
 Event::listen('404', function()
 {
 	return Response::error('404');

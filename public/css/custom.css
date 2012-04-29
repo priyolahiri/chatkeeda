@@ -4,18 +4,22 @@ body {
 #chat_window {
 	min-height: 300px;
 	max-height: 300px;
+	overflow-y: auto;
 }
 #comm_window {
 	min-height: 200px;
 	max-height: 200px;
+	overflow-y: auto;
 }
 #contacts_window {
 	min-height: 150px;
-	max-height: 150px
+	max-height: 150px;
+	overflow-y: auto;
 }
 #approve_window {
 	min-height: 150px;
 	max-height: 150px;
+	overflow-y: auto;
 }
 ul.window {
 	margin: 5px;
