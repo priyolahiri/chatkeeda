@@ -12,7 +12,7 @@
 			$(function() {
 				chatInit();
 			})
-			chatInit() {
+			function chatInit() {
 				$.ajax({
 					url: '/chatnow/<?php echo($chat->chatinfo['slug']) ?>',
 						type: 'POST',
