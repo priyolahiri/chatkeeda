@@ -38,7 +38,7 @@
 						<h2><?php echo ($key) ?> Chats</h2>
 						<hr/>
 							<?php
-							if (!$list) {
+							if ($list->count < 1) {
 							?>
 								<h4>No Chats Found</h4>
 							<?php
