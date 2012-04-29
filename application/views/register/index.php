@@ -5,9 +5,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/underscore.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/font-awesome.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/custom.css" media="all" />
+		<?php echo($regform->returnJSAll()); ?>
 		<title>ChatKeeda | Register</title>
 	</head>
 	<body>
