@@ -1,6 +1,6 @@
 <?php
 
-Route::controller(array('home'));
+Route::controller(array('home', 'register'));
 
 Event::listen('404', function()
 {

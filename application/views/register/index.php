@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/font-awesome.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/custom.css" media="all" />
-		<title>ChatKeeda | Home</title>
+		<title>ChatKeeda | Register</title>
 	</head>
 	<body>
 		<!-- Page Container Begin -->
@@ -32,23 +32,12 @@
     								<span class="divider">/</span>
   							</li>
   							<li class="active">
-    								<a href="#">Home</a>
+    								<a href="#">Register</a>
   							</li>
 						</ul>
-						<div class="row">
-							<div class="span4">
-								<p align="center">
-									Col 1
-								</p>
-							</div>
-							<div class="span4">
-								<p align="center">
-									Col 2
-								</p>
-							</div>
-							<div class="clear clearfix"></div>
-						</div>
-						<div class="clear clearfix"></div>
+						<h2>Register</h2>
+						<hr/>
+						    <?php echo($regform->returnForm()) ?>
 						<hr/>
 					</div>
 					<!-- Content Inner End -->
