@@ -15,7 +15,7 @@ Class Chat {
 		$this->chats->insert($insert);	
 	}
 	public function checkName($name) {
-		//$check = $this->chatcoll->findOne(array("slug" => Str::slug($name)));
+		$this->construct();
 		$slug = Str::slug($name);
 		$check = $this->chats->findOne(array("slug" => $slug));
 		if ($check) {
