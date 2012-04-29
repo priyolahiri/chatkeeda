@@ -6,19 +6,19 @@ Class User {
 		$db = $mongo->chatkeeda;
 		$this->usercoll = $db->users;
 		if (!Session::has('chatkedda_user')) {
-			$this->authstatus = false;
+			$this->authstatus = FALSE;
 		} else {
 			$username = Session::get('chatkeeda_user');
 			$userfind = $this->usercoll->findOne(array("username" => $username));
 			if ($userfind) {
-				$this->authstatus = true;
+				$this->authstatus = TRUE;
 				$this->userinfo['username'] 		= $userfind['email'];
 				$this->userinfo['email'] 			= $userfind['email'];
 				$this->userinfo['first_name'] 	= $userfind['first_name'];
 				$this->userinfo['last_name'] 	= $userfind['last_name'];
 				$this->userinfo['role'] 				= $userfind['role'];
 			} else {
-				$this->authstatus = false;
+				$this->authstatus = FALSE;
 			}
 		}
 	}
@@ -33,25 +33,25 @@ Class User {
 	}
 	public function doAuth() {
 		if (!Input::get('username') or !Input::get('password')) {
-			return array('success' => false,'msg' => 'Both the username and password are needed.');
+			return array('success' => FALSE,'msg' => 'Both the username and password are needed.');
 		}
 		$username = Input::get('username');
 		$password = Input::get('password');
 		$userfind = $this->usercoll->findOne(array("username" => $username, "password" => md5($password)));
 		if ($userfind) {
 			Session::put('chatkeeda_user', $userfind['email']);
-			$this->authstatus = true;
+			$this->authstatus = TRUE;
 			$this->userinfo['username'] 		= $userfind['username'];
 			$this->userinfo['email'] 			= $userfind['email'];
 			$this->userinfo['first_name'] 	= $userfind['first_name'];
 			$this->userinfo['last_name'] 	= $userfind['last_name'];
 			$this->userinfo['role'] 				= $userfind['role'];
-			return array('success' => true, 'msg' => 'Logged in successfully.');
+			return array('success' => TRUE, 'msg' => 'Logged in successfully.');
 		} else {
-			return array('success' => false, 'msg' => 'Wrong username or password.');
+			return array('success' => FALSE, 'msg' => 'Wrong username or password.');
 		}
 	}
-	public function createUser($role = false) {
+	public function createUser($role = FALSE) {
 		$newuser = array();
 		$newuser['username'] 	= Input::get('username');
 		$newuser['email'] 			= Input::get('email');
@@ -62,7 +62,7 @@ Class User {
 		try {
 			$this->usercoll->insert($newuser);
 		} catch (Exception $e) {
-			return json_encode(array("error" =>true, "error_detail" => "Account creation failed."));
+			return json_encode(array("error" => TRUE, "error_detail" => "Account creation failed."));
 		}
 		Session::put('chatkeeda_user', Input::get('username'));
 		$this->__construct();
@@ -99,6 +99,6 @@ Class User {
   		// Give it a body
   		->setBody($msgbody, 'text/html');
 		$result = $mailer->send($message);
-		return json_encode(array("success" => true));
+		return json_encode(array("success" => TRUE));
 	}
 }

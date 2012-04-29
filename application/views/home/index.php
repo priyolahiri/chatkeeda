@@ -51,7 +51,7 @@
 				<div class="span3" id="sidebar">
 					<div id="sidebar_inner" class="well">
 						<?php
-						if (!$userinfo) {
+						if (!$user->authstatus) {
 						?>
 						<form method="post" action="/login">
 							<div class="control-group">

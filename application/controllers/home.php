@@ -6,7 +6,6 @@ class Home_Controller extends Base_Controller {
 		$success = Session::get('success');
 		$error = Session::get('error');
 		$user = new User;
-		$userinfo = $user->returnUser();
-		return View::make('home.index')->with('error', $error)->with('success', $success)->with('userinfo', $userinfo);
+		return View::make('home.index')->with('error', $error)->with('success', $success)->with('user', $user);
 	}
 }
