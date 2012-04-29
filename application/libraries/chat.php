@@ -10,13 +10,13 @@ Class Chat {
 		$this->init = false;
 	}
 	public function newChat($name, $score = false) {
-		$slug = URL::slug($name);
+		$slug = Str::slug($name);
 		$insert = array("name" => $name, "slug" => $slug, "creator" => $this->userinfo['username'], "admins" => json_encode(array($this->userinfo['username'])), "live" => true, "start" => time(), "end" => "");
 		$this->chatcoll->insert($insert);	
 	}
 	public function checkName($name) {
-		//$check = $this->chatcoll->findOne(array("slug" => URL::slug($name)));
-		$slug = URL::slug($name);
+		//$check = $this->chatcoll->findOne(array("slug" => Str::slug($name)));
+		$slug = Str::slug($name);
 		$check = $this->chatcoll->findOne(array("slug" => $slug));
 		if ($check) {
 			return true;
