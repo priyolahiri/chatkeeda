@@ -35,21 +35,14 @@
     								<a href="#">Home</a>
   							</li>
 						</ul>
-						<div class="row">
-							<div class="span4">
-								<p align="center">
-									Col 1
-								</p>
-							</div>
-							<div class="span4">
-								<p align="center">
-									Col 2
-								</p>
-							</div>
-							<div class="clear clearfix"></div>
-						</div>
-						<div class="clear clearfix"></div>
+						<h2>Home</h2>
 						<hr/>
+						<div class="btn-group">
+    								<a class="btn btn-success" href="/chat/running">Running Chats</a>
+    								<a class="btn btn-primary" href="/chat/closed">Closed Chats</a>
+    								<a class="btn btn-info" href="/chat/new">New Chat</a>
+    						</div>
+    						<hr/>
 					</div>
 					<!-- Content Inner End -->
 				</div>
