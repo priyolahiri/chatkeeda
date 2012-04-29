@@ -25,6 +25,13 @@ Route::post('chatnow/(:any)', function($slug) {
 	$chat->initChat($slug);
 	return json_encode($chat->authChat());
 });
+Route::post('chatauth/(:any)', function($slug) {
+	$chat = new Chat;
+	$chat->initChat($slug);
+	$pusher = new Pusher(PUSHERKEY, PUSHERSECRET, PUSHERAPPID);
+	$presence_data = json_encode($chat->authChat());
+	return $pusher->presence_auth($_POST['channel_name'], $_POST['socket_id'], $user_id, $chat->userinfo['username']);
+});
 
 Event::listen('404', function()
 {
