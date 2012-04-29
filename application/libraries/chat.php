@@ -28,6 +28,7 @@ Class Chat {
 			$this->chatinfo = $chatretr;
 			$chatid = $this->chatinfo['slug'];
 			$score = $this->chatinfo['score'];
+			include 'Rediska.php';
 			$this->rediska = new Rediska();
 			$this->pusher = new Pusher(PUSHERKEY, PUSHERSECRET, PUSHERAPPID);
 			$this->pusherKey = PUSHERKEY;
