@@ -35,9 +35,8 @@
     								<a href="#"><?php echo ($key) ?> Chats</a>
   							</li>
 						</ul>
-						<h2>Home</h2>
-						<hr/>
 						<h2><?php echo ($key) ?> Chats</h2>
+						<hr/>
 							<?php
 							if (!$list) {
 							?>
@@ -45,11 +44,12 @@
 							<?php
 							} else {
 							?>
-								    <table>
+								    <table width="100%">
     										<thead>
     											<tr>
     												<th>Chat Name</th>
     												<th>Creator</th>
+    												<th>Created</th>
     												<th>&nbsp;</th>
     											</tr>
     										</thead>
@@ -59,6 +59,7 @@
     												echo '<tr>';
 												echo '<td>'.$item['name'].'</td>';
 												echo '<td>'.$item['creator'].'</td>';
+												echo '<td>'.date('D, jS F, Y ', $item['created']).'</td>';
 												echo '<td><a href="/chatnow/'.$item['slug'].'" class="btn btn-success">Go</a></td>';	
 												echo '<tr/>';
     											}
