@@ -76,14 +76,14 @@ Class Chat {
 			$superadmin = false;
 			$creator = false;
 		}
-		return json_encode(array(
+		return array(
 			"auth" => $auth,
 			"username" => $username,
 			"role" => $role,
 			"admin" => $admin,
 			"superadmin" => $superadmin,
 			"creator" => $creator
-		));
+		);
 	}
 	public function listChats($live = true) {
 		return $this->chatcoll->find(array("live" => $live));

@@ -15,8 +15,16 @@ Route::get('logout', function() {
 	Session::flush();
 	return Redirect::to('/')->with('success', 'Successfully logged out!');
 });
-
-
+Route::get('chatnow/(:any)', function($slug) {
+	$chat = new Chat;
+	$chat->initChat($slug);
+	return View::make('chat.now')->with('chat', $chat);
+});
+Route::post('chatnow/(:any)', function($slug) {
+	$chat = new Chat;
+	$chat->initChat($slug);
+	return json_encode($chat->authChat());
+});
 
 Event::listen('404', function()
 {
