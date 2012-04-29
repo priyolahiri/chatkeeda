@@ -1,5 +1,5 @@
 <?php
-Class Home_Controller extends Base_Controller {
+Class Register_Controller extends Base_Controller {
 	public function action_index() {
 		$customval = array(array(
 		"name" => "email_check",
