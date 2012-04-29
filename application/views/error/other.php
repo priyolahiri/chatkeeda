@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/font-awesome.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/custom.css" media="all" />
-		<title>ChatKeeda | Home</title>
+		<title>ChatKeeda | <?php echo ($title) ?></title>
 	</head>
 	<body>
 		<!-- Page Container Begin -->
@@ -32,7 +32,7 @@
     								<span class="divider">/</span>
   							</li>
   							<li class="active">
-    								<a href="#">Home</a>
+    								<a href="#">Error</a>
   							</li>
 						</ul>
 						<h2>Home</h2>
@@ -43,6 +43,7 @@
     								<a class="btn btn-info" href="/chat/new">New Chat</a>
     						</div>
     						<hr/>
+    						<h3><?php echo($error) ?></h3>
 					</div>
 					<!-- Content Inner End -->
 				</div>

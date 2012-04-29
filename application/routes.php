@@ -16,6 +16,8 @@ Route::get('logout', function() {
 	return Redirect::to('/')->with('success', 'Successfully logged out!');
 });
 
+
+
 Event::listen('404', function()
 {
 	return Response::error('404');
