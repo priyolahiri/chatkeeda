@@ -10,9 +10,6 @@ Class Chat {
 		$this->init = false;
 	}
 	public function newChat($name, $score = false) {
-		if ($this->checkName($name)) {
-			return false;
-		}
 		$slug = URL::slug($name);
 		$insert = array("name" => $name, "slug" => $slug, "creator" => $this->userinfo['username'], "admins" => json_encode(array($this->userinfo['username'])), "live" => true, "start" => time(), "end" => "");
 		$this->chatcoll->insert($insert);	
