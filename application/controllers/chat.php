@@ -46,7 +46,7 @@ Class Chat_Controller extends Base_Controller {
 		$success = Session::get('success');
 		$error = Session::get('error');
 		$chat = new Chat;
-		$list = $chats->listChats(FALSE);
+		$list = $chat->listChats(FALSE);
 		return View::make('chat.list')->with('success', $success)->with('error', $error)->with('list', $list)->with('key', 'Closed');
 	}
 }
