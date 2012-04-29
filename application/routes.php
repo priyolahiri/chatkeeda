@@ -32,7 +32,7 @@ Route::post('chatauth/(:any)', function($slug) {
 	$pusher = new Pusher(PUSHERKEY, PUSHERSECRET, PUSHERAPPID);
 	$presence_data = $chat->authChat();
 	error_log('chatauth');
-	return $pusher->presence_auth($_POST['channel_name'], $_POST['socket_id'], 1, $chat->userinfo['username']);
+	return $pusher->presence_auth($_POST['channel_name'], $_POST['socket_id'], $chat->userinfo['username'], $presence_data);
 });
 
 Event::listen('404', function()
