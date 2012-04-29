@@ -1,6 +1,8 @@
 <?php
 Class Register_Controller extends Base_Controller {
 	public function action_index() {
+		$success = Session::get('success');
+		$error = Session::get('error');
 		$customval = array(array(
 		"name" => "email_check",
 		"function" => 
@@ -76,7 +78,7 @@ Class Register_Controller extends Base_Controller {
 							"Registration Error",
 							"An error prevented the registration. Please try again later."
 							);
-		return View::make('register.index')->with('regform', $regform);
+		return View::make('register.index')->with('regform', $regform)->with('error', $error)->with('success', $success);
 	}
 	public function action_create() {
 		$user = new User;
