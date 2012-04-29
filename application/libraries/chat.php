@@ -1,6 +1,6 @@
 <?php
 Class Chat {
-	public function __	construct() {
+	public function __construct() {
 		$user = New User;
 		$this->userinfo = $user->returnUser();
 		$mongo = new Mongo(MONGOHOST);
@@ -15,7 +15,6 @@ Class Chat {
 		$this->chats->insert($insert);	
 	}
 	public function checkName($name) {
-		$this->construct();
 		$slug = Str::slug($name);
 		$check = $this->chats->findOne(array("slug" => $slug));
 		if ($check) {
