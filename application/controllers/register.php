@@ -38,7 +38,7 @@ Class Register_Controller extends Base_Controller {
 					var response;
 				  	dataajax = \$.ajax({
 				  		url: 	'/register/usercheck',
-				  	  	data:	'email='+value,
+				  	  	data:	'username='+value,
 				  	  	dataType: 'json',
 				  	  	type: 'POST',
 				  	  	async: false,
