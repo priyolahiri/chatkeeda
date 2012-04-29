@@ -43,6 +43,9 @@
     								<a class="btn btn-info" href="/chat/new">New Chat</a>
     						</div>
     						<hr/>
+    						<?php
+    						var_dump($user);
+    						?>
 					</div>
 					<!-- Content Inner End -->
 				</div>
