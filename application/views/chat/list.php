@@ -44,7 +44,7 @@
 							<?php
 							} else {
 							?>
-								    <table width="100%">
+								    <table width="100%" class="table table-striped table-bordered table-condensed">
     										<thead>
     											<tr>
     												<th>Chat Name</th>
