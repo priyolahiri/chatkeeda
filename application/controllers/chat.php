@@ -6,7 +6,7 @@ Class Chat_Controller extends Base_Controller {
 		$user = new User;
 		if (!$user->authstatus) {
 			return View::make('error.other')->with('title', "Authentication Error")
-			->with('error', "You need to be signed in to create a chat.")
+			->with('errormsg', "You need to be signed in to create a chat.")
 			->with('user', $user)
 			->with('error', $error)->with('success', $success);
 		}

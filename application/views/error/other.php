@@ -35,7 +35,7 @@
     								<a href="#">Error</a>
   							</li>
 						</ul>
-						<h2>Home</h2>
+						<h2><?php echo ($title) ?></h2>
 						<hr/>
 						<div class="btn-group">
     								<a class="btn btn-success" href="/chat/running">Running Chats</a>
@@ -43,7 +43,7 @@
     								<a class="btn btn-info" href="/chat/new">New Chat</a>
     						</div>
     						<hr/>
-    						<h3><?php echo($error) ?></h3>
+    						<h3><?php echo($errormsg) ?></h3>
 					</div>
 					<!-- Content Inner End -->
 				</div>
