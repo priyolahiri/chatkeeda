@@ -32,7 +32,7 @@ Class User {
 		return $this->authstatus;
 	}
 	public function doAuth() {
-		if (!Input::get('usernname') or !Input::get('password')) {
+		if (!Input::get('username') or !Input::get('password')) {
 			return array('success' => false,'msg' => 'Both the username and password are needed.');
 		}
 		$username = Input::get('username');
