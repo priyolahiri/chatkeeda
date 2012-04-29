@@ -33,9 +33,9 @@
 							if (data.admin) {
 								channel.bind('pusher:subscription_succeeded', function(members) {
 									var onlinetext = members.count + ' user(s) online';
-									$('#contacts_window ul.window').append('<li>'+onlinetext+'</li>');
+									$('#contacts_window ul.window').append('<li class="well">'+onlinetext+'</li>');
 									members.each(function(member) {
-										$('#contacts_window ul.window').append('<li>'+member.username+'<br/>'+member.role+'</li>');
+										$('#contacts_window ul.window').append('<li class="well">'+member.info.username+'<br/>'+member.info.role+'</li>');
 									});
 								});
 								channel.bind('pusher:member_added', function(member) {
