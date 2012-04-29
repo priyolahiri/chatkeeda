@@ -44,7 +44,7 @@ Class Chat {
 		return false;
 	}
 	public function authChat() {
-		if (!$this->userinfo) {
+		if ($this->userinfo) {
 			$auth = true;
 			if ($this->userinfo['username'] == $this->chatinfo['creator']) {
 				$creator = true;
