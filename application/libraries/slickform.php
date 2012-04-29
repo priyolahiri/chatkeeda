@@ -47,7 +47,7 @@ Class Slickform {
 				$method_name = $customjs['name'];
 				$method_func   = $customjs['function'];
 				$method_msg	 = $customjs['msg'];
-				$this->jsmain_middle = "
+				$this->jsmain_middle .= "
 					jQuery.validator.addMethod(\"$method_name\", $method_func, \"$method_msg\");\n
 				";
 			}
