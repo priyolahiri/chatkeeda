@@ -5,7 +5,7 @@ Class User {
 		$mongo = new Mongo(MONGOHOST);
 		$db = $mongo->chatkeeda;
 		$this->usercoll = $db->users;
-		if (!Session::has('chatkedda_user')) {
+		if (!Session::has('chatkeeda_user')) {
 			$this->authstatus = FALSE;
 		} else {
 			$username = Session::get('chatkeeda_user');
