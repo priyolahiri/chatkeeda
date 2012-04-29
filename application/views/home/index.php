@@ -52,9 +52,9 @@
 					<div id="sidebar_inner" class="well">
 						<form method="post" action="/user/login">
 							<div class="control-group">
-								<label class="control-label" for="username">Username</label>
+								<label class="control-label" for="username">Username/Nickname</label>
 								<div class="input-prepend">
-              						<span class="add-on"><i class="icon-envelope"></i></span>
+              						<span class="add-on"><i class="icon-user"></i></span>
               						<input type="text" id="username" name="username" class="span2">
             						</div>
 								<label class="control-label" for="password">Password</label>

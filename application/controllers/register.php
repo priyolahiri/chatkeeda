@@ -60,7 +60,7 @@ Class Register_Controller extends Base_Controller {
 		);
 		$regform = new Slickform('register', 'POST', '/register/create', 'form-horizontal', false, true, true, 'right', $customval);
 		$regform->addFieldset('Account Information');
-		$regform->addTextField('username', 'Username', false, true, false,"Enter valid username.", 'user_check', false, 'user');
+		$regform->addTextField('username', 'Username/Nickname', false, true, false,"Enter valid username.", 'user_check', false, 'user');
 		$regform->addTextField('email', 'Email', false, true, false,"Enter valid e-mail address. Preferably company.", 'email email_check', false, 'envelope');
 		$regform->addPasswordField('password', 'Password', false, true, false, "Choose a password atleast 5 chars long.", false, array("minlength" => "5"), 'lock');
 		$regform->endFieldset();
