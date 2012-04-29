@@ -50,6 +50,9 @@
 				<!-- Sidebar Begin -->
 				<div class="span3" id="sidebar">
 					<div id="sidebar_inner" class="well">
+						<?php
+						if (!$userinfo) {
+						?>
 						<form method="post" action="/user/login">
 							<div class="control-group">
 								<label class="control-label" for="username">Username/Nickname</label>
@@ -80,6 +83,13 @@
 							}
 							?>
 						</form>
+						<?php
+						} else {
+						?>
+						<a href="/logout" class="btn btn-primary">Logout</a>
+						<?php
+						}
+						?>
 					</div>
 				</div>
 				<!-- Sidebar End -->
