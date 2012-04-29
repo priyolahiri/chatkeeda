@@ -23,6 +23,9 @@ Class User {
 		}
 	}
 	public function returnUser() {
+		if (!$this->authstatus) {
+			return false;
+		}
 		return $this->userinfo;
 	}
 	public function returnStatus() {
