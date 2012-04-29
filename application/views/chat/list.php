@@ -58,8 +58,8 @@
     											foreach ($list as $item) {
     												echo '<tr>';
 												echo '<td>'.$item['name'].'</td>';
-												echo '<td>'.$item->creator.'</td>';
-												echo '<td><a href="/chatnow/'.$item->slug.'" class="btn btn-success">Go</a></td>';	
+												echo '<td>'.$item['creator'].'</td>';
+												echo '<td><a href="/chatnow/'.$item['slug'].'" class="btn btn-success">Go</a></td>';	
 												echo '<tr/>';
     											}
     											?>
