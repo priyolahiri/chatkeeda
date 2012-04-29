@@ -27,6 +27,7 @@ Class Chat {
 		if ($chatretr) {
 			$this->chatinfo = $chatretr;
 			$chatid = $this->chatinfo['slug'];
+			$this->chatslug = $this->chatinfo['slug'];
 			$score = $this->chatinfo['score'];
 			include 'Rediska.php';
 			$this->rediska = new Rediska();

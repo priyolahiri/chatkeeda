@@ -11,6 +11,15 @@
 		<script language="JavaScript">
 			$(function() {
 				chatInit();
+				<?php
+				if ($chat->chatinfo['live']) {
+					echo "
+					pusher = new Pusher('<?php echo($chat->pusherKey); ?>');
+					Pusher.channel_auth_endpoint = '/chatauth/<?php echo($chat->chatslug) ?>';
+					channel = pusher.subscribe('<?php echo ($chat->pusherChannel) ?>');
+					";
+				}
+				?>
 			})
 			function chatInit() {
 				$.ajax({
