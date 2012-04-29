@@ -16,7 +16,8 @@ define('WEBROOT', '/mnt/www/chatkeeda.priyolahiri.co.cc');
 define ('PUSHERKEY', '');
 define ('PUSHERSECRET', '');
 define ('PUSHERAPPID', '');
-
+define('MONGOHOST', '');
+define('ADMINMAIL', '');
 // --------------------------------------------------------------
 // Indicate that the request is from the web.
 // --------------------------------------------------------------

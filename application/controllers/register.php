@@ -67,7 +67,6 @@ Class Register_Controller extends Base_Controller {
 		$regform->addFieldset('Personal Information');
 		$regform->addTextField('first_name', 'First Name', false, true, false, "Enter your first name.", false, array("minlength" => "3"), 'user');
 		$regform->addTextField('last_name', 'Last Name', false, true, false, "Enter your last name.", false, array("minlength" => "3"), 'user');
-		$regform->addTextField('city', 'City', false, true, false, "Enter your location.", false, false, 'map-marker');
 		$regform->addFormActions();
 		$regform->addButton('register', 'Register', 'submit', 'primary', false, "ok-circle");
 		$regform->endFormActions();
