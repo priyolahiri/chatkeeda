@@ -1,5 +1,5 @@
 <?php
-Route::controller(array('home', 'register'));
+Route::controller(array('home', 'register', 'chat'));
 
 Route::post('login', function() {
 	$user = new User;
