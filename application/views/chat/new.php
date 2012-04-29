@@ -38,6 +38,15 @@
 						<h2>Home</h2>
 						<hr/>
 						<h2>New Chat</h2>
+						    <form class="well form-inline" method="post" action="/chat/create">
+    								Chat Name <input type="text" class="input-medium" placeholder="Email">
+    								Score
+    								<select name="score" id="score">
+    									<option value="yes">Yes</option>	
+    									<option value="no">No</option>
+    								</select>
+        							<button type="submit" class="btn btn-primary">Create</button>
+    							</form>
 					</div>
 					<!-- Content Inner End -->
 				</div>

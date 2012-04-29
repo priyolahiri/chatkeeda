@@ -10,6 +10,9 @@ Class Chat_Controller extends Base_Controller {
 			->with('user', $user)
 			->with('error', $error)->with('success', $success);
 		}
-		return View::make('chat.new')->with('regform', $regform)->with('error', $error)->with('success', $success)->with('user', $user);
+		return View::make('chat.new')->with('error', $error)->with('success', $success)->with('user', $user);
+	}
+	public function action_create() {
+		
 	}
 }
