@@ -5,25 +5,25 @@ Class Chat {
 		$this->userinfo = $user->returnUser();
 		$mongo = new Mongo(MONGOHOST);
 		$db = $mongo->chatkeeda;	
-		$this->chats = $db->chats;
+		$this->chatcoll = $db->chats;
 		$this->chatinfo = false;
 		$this->init = false;
 	}
 	public function newChat($name, $score = false) {
 		$slug = Str::slug($name);
 		$insert = array("name" => $name, "slug" => $slug, "creator" => $this->userinfo['username'], "admins" => json_encode(array($this->userinfo['username'])), "live" => true, "start" => time(), "end" => 0);
-		$this->chats->insert($insert);	
+		$this->chatcoll->insert($insert);	
 	}
 	public function checkName($name) {
 		$slug = Str::slug($name);
-		$check = $this->chats->findOne(array("slug" => $slug));
+		$check = $this->chatcoll->findOne(array("slug" => $slug));
 		if ($check) {
 			return true;
 		}
 		return false;
 	}
 	public function initChat($slug) {
-		$chatretr = $this->chats->findOne(array("slug" => $slug));
+		$chatretr = $this->chatcoll->findOne(array("slug" => $slug));
 		if ($chatretr) {
 			$this->chatinfo = $chatretr;
 			$chatid = $this->chatinfo['slug'];
@@ -33,7 +33,7 @@ Class Chat {
 			$this->pusherKey = PUSHERKEY;
 			$this->pusherChannel = "presence-".$chatid;
 			$this->pusherModChannel = "presence-".$chatid."-moderate";
-			$this->chatset = new Rediska_Key_List($chatid."_chat");
+			$this->chatcollet = new Rediska_Key_List($chatid."_chat");
 			$this->modchatset = new Rediska_Key_List($chatid."_chat_moderate");
 			if ($score) {
 				$this->chatscore = new Rediska_Key_List($chatid."_score");
@@ -84,5 +84,8 @@ Class Chat {
 			"superadmin" => $superadmin,
 			"creator" => $creator
 		));
+	}
+	public function listChats($live = true) {
+		return $this->chatcoll->find(array("live" => $live));
 	}
 }
