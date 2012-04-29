@@ -59,7 +59,6 @@ Class User {
 		$newuser['first_name'] 	= Input::get('first_name');
 		$newuser['last_name'] 	= Input::get('last_name');
 		$newuser['role']			= !$role ? 'normal' : $role;
-		$invite = new Invite;
 		try {
 			$this->usercoll->insert($newuser);
 		} catch (Exception $e) {
