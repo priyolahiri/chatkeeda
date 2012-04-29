@@ -11,7 +11,7 @@ Class Chat {
 	}
 	public function newChat($name, $score = false) {
 		$slug = Str::slug($name);
-		$insert = array("name" => $name, "slug" => $slug, "creator" => $this->userinfo['username'], "admins" => json_encode(array($this->userinfo['username'])), "live" => true, "start" => time(), "end" => 0);
+		$insert = array("name" => $name, "slug" => $slug, "creator" => $this->userinfo['username'], "admins" => json_encode(array($this->userinfo['username'])), "live" => true, "score" => $score, "start" => time(), "end" => 0);
 		$this->chatcoll->insert($insert);	
 	}
 	public function checkName($name) {
