@@ -51,7 +51,7 @@ Class Chat {
 			} else {
 				$creator = false;
 			}
-			if ($this->userinfo['role'] = 'superadmin') {
+			if ($this->userinfo['role'] ==	 'superadmin') {
 				$superadmin = true;
 				$role = "superadmin";
 			} else {
