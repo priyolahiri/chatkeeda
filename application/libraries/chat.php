@@ -1,6 +1,6 @@
 <?php
 Class Chat {
-	public function construct() {
+	public function __	construct() {
 		$user = New User;
 		$this->userinfo = $user->returnUser();
 		$mongo = new Mongo(MONGOHOST);

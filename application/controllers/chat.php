@@ -33,6 +33,6 @@ Class Chat_Controller extends Base_Controller {
 			$score = FALSE;
 		}
 		$chat->newChat(Input::get('chat_name'), $score);
-		return Redirect::to('/chat/new')->with('success', "The chat was created.<br/><a href='/chatnow/'".URL::slug(Input::get('chat_name'))."'>Chat Now</a>");
+		return Redirect::to('/chat/new')->with('success', "The chat was created.<br/><a href='/chatnow/'".Str::slug(Input::get('chat_name'))."'>Chat Now</a>");
 	}
 }
