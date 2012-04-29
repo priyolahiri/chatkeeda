@@ -31,6 +31,7 @@ Route::post('chatauth/(:any)', function($slug) {
 	$user_id = $chat->userinfo['username'];
 	$pusher = new Pusher(PUSHERKEY, PUSHERSECRET, PUSHERAPPID);
 	$presence_data = json_encode($chat->authChat());
+	error_log('chatauth');
 	return $pusher->presence_auth($_POST['channel_name'], $_POST['socket_id'], $user_id, $chat->userinfo['username']);
 });
 
