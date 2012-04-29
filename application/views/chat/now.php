@@ -81,6 +81,10 @@
 				<div class="span3" id="sidebar">
 					<div id="sidebar_inner" class="well">
 						<a href="/logout" class="btn btn-primary">Logout</a>
+						<hr/>
+						<button id="finish_chat">Finish Chat</button>
+						<hr/>
+						
 					</div>
 				</div>
 				<!-- Sidebar End -->

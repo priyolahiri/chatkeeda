@@ -2,10 +2,10 @@ body {
 	background-color: #DADADA;
 }
 #chat_window {
-	min-height: 400px;
-	max-height: 400px;
-}
-#comm_window {
 	min-height: 300px;
 	max-height: 300px;
+}
+#comm_window {
+	min-height: 200px;
+	max-height: 200px;
 }
