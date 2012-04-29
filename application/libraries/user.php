@@ -101,10 +101,4 @@ Class User {
 		$result = $mailer->send($message);
 		return json_encode(array("success" => true));
 	}
-	public function deleteUser($username) {
-		
-	}
-	public function changeRole($username, $role) {
-		
-	}
 }

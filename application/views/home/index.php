@@ -53,7 +53,7 @@
 						<?php
 						if (!$userinfo) {
 						?>
-						<form method="post" action="/user/login">
+						<form method="post" action="/login">
 							<div class="control-group">
 								<label class="control-label" for="username">Username/Nickname</label>
 								<div class="input-prepend">

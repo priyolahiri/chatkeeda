@@ -1,6 +1,20 @@
 <?php
-
 Route::controller(array('home', 'register'));
+
+Route::post('login', function() {
+	$usertry = new User;
+	$usertry = $user->doAuth();
+	if ($usertry['success']) {
+		return Redirect::to('/')->with('success', $usertry['msg']);
+	} else {
+		return Redirect::to('/')->with('error', $usertry['msg']);
+	}
+});
+
+Route::get('logout', function() {
+	Session::flush();
+	return Redirect::to('/')->with('success', 'Successfully logged out!');
+});
 
 Event::listen('404', function()
 {
