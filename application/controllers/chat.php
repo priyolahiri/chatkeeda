@@ -13,6 +13,26 @@ Class Chat_Controller extends Base_Controller {
 		return View::make('chat.new')->with('error', $error)->with('success', $success)->with('user', $user);
 	}
 	public function action_create() {
-		
+		$user = new User;
+		if (!$user->authstatus) {
+			return View::make('error.other')->with('title', "Authentication Error")
+			->with('errormsg', "You need to be signed in to create a chat.")
+			->with('user', $user)
+			->with('error', $error)->with('success', $success);
+		}
+		if (!Input::get('chat_name') or len(Input::get('chat_name') < 4)) {
+			return Redirect::to('/chat/new')->with('error', "Chat name needs to be atleast four characters in length.");
+		}
+		$chat = new Chat;
+		if ($chat->checkName(Input::get('chat_name'))) {
+			return Redirect::to('/chat/new')->with('error', "Chat name already taken. Please try another.");
+		}
+		if (Input::get('score') == "yes") {
+			$score = TRUE;
+		} else {
+			$score = FALSE;
+		}
+		$chat->newChat(Input::get('chat_name'), $score);
+		return Redirect::to('/chat/new')->with('success', "The chat was created.<br/><a href='/chatnow/'".URL::slug(Input::get('chat_name'))."'>Chat Now</a>");
 	}
 }
