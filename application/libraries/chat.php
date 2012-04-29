@@ -59,7 +59,7 @@ Class Chat {
 				$role = "normal";
 			}
 			$chatadmins = json_decode($this->chatinfo['admins'], true);
-			if (in_array($this->userinfo['email'], $chatadmins)) {
+			if (in_array($this->userinfo['username'], $chatadmins)) {
 				$admin = true;
 			} else {
 				$admin = false;

@@ -12,7 +12,7 @@ Class User {
 			$userfind = $this->usercoll->findOne(array("username" => $username));
 			if ($userfind) {
 				$this->authstatus = TRUE;
-				$this->userinfo['username'] 		= $userfind['email'];
+				$this->userinfo['username'] 		= $userfind['username'];
 				$this->userinfo['email'] 			= $userfind['email'];
 				$this->userinfo['first_name'] 	= $userfind['first_name'];
 				$this->userinfo['last_name'] 	= $userfind['last_name'];
