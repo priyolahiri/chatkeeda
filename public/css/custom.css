@@ -9,3 +9,11 @@ body {
 	min-height: 200px;
 	max-height: 200px;
 }
+#contacts_window {
+	min-height: 150px;
+	max-height: 150px
+}
+#approve_window {
+	min-height: 150px;
+	max-height: 150px;
+}

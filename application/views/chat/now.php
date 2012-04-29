@@ -84,7 +84,13 @@
 						<hr/>
 						<button id="finish_chat">Finish Chat</button>
 						<hr/>
-						
+						<div class="well" id="contacts_window">
+							&nbsp;
+						</div>
+						<div class="clearfix"></div>
+						<div class="well" id="approve_window">
+							&nbsp;
+						</div>
 					</div>
 				</div>
 				<!-- Sidebar End -->
