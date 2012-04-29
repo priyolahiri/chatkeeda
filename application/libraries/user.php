@@ -39,7 +39,7 @@ Class User {
 		$password = Input::get('password');
 		$userfind = $this->usercoll->findOne(array("username" => $username, "password" => md5($password)));
 		if ($userfind) {
-			Session::put('chatkeeda_user', $userfind['email']);
+			Session::put('chatkeeda_user', $userfind['username']);
 			$this->authstatus = TRUE;
 			$this->userinfo['username'] 		= $userfind['username'];
 			$this->userinfo['email'] 			= $userfind['email'];
