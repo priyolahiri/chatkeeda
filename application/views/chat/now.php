@@ -1297,7 +1297,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});
 						</div>
 						<div class="clearfix"></div>
 						<div class="well" id="comm_window">
-							<div style="width: 50%;">
+							<div style="width: 50%; clear: none; display: inline; float: left;">
 							<form enctype="multipart/form-data" id="submit_chat" class="form-inline">
 								<label for="chat_text">Text</label><br/>
 								<textarea name="chat_text" id="chat_text" class="span3"></textarea>
@@ -1331,11 +1331,8 @@ jQuery('.tab#'+stringref).fadeIn();return false;});
 								<input type="text" name="vid_code" id="vid_code">
 							</form>
 							</div>
-							<div style="width: 10%;">
-								&nbsp;
-							</div>
-							<div style="width: 40%;">
-								<form id="submit_score" class="form_inline">
+							<div style="width: 50%; clear: none; display: inline; float: right;">
+								<form id="submit_score" class="form-inline">
 									<label for="score_text">Score</label>
 									<br>
 									<input type="text" name="score_text" id="score_text" class="span3"><br/>
@@ -1344,6 +1341,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});
 									</button>
 								</form>
 							</div>
+							<div class="clearfix"></div>
 						</div>
 					</div>
 					<!-- Content Inner End -->
