@@ -1288,7 +1288,10 @@ jQuery('.tab#'+stringref).fadeIn();return false;});
 			</div>
 			<!-- Body End -->
 			<!-- Footer Begin -->
-			<div id="footer-wrapper">
+			<div class="row">
+				<div class="span12">
+					<div id="foot_contain" style="margin: auto; width: 960px;">
+						<div id="footer-wrapper">
 				<div class="top">&nbsp;</div>
 				<div id="footer"> 
         <div class="inner"> 
@@ -1357,6 +1360,9 @@ jQuery('.tab#'+stringref).fadeIn();return false;});
         </div> 
     </div>
     <div class="bottom">&nbsp;</div>
+			</div>
+					</div>
+				</div>
 			</div>
 			<!-- Footer End -->
 		</div>
