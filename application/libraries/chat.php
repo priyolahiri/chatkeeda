@@ -71,7 +71,7 @@ Class Chat {
 			if (Session::has("anonid")) {
 				$username = Session::get("anonid");
 			} else {
-				$username = uniqid("", true);
+				$username = uniqid();
 			}
 			$role = "anonymous";
 			$admin = false;
