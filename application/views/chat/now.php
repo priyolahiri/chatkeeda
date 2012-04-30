@@ -1297,41 +1297,53 @@ jQuery('.tab#'+stringref).fadeIn();return false;});
 						</div>
 						<div class="clearfix"></div>
 						<div class="well" id="comm_window">
-							<form id="submit_chat"  enctype="multipart/form-data">
-								<label for="chat_text">Text</label>
-								<br/>
-								<textarea id="chat_text" name="chat_text"></textarea>
-								<button type="submit" class="small green">
+							<div style="width: 50%;">
+							<form enctype="multipart/form-data" id="submit_chat" class="form-inline">
+								<label for="chat_text">Text</label><br/>
+								<textarea name="chat_text" id="chat_text" class="span3"></textarea>
+								<button class="btn btn-success" type="submit">
 									Send
 								</button>
-								<br/>
-								<a id="setdispname_link" href="#">Set Display Name</a>
-								<br/>
+								<br>
 								<label for="img_source">Image Source</label>
-								<br/>
-								<select id="img_source" name="img_source">
+								<br>
+								<select name="img_source" id="img_source">
 									<option value="NA">None</option>
 									<option value="upload">Upload</option>
 									<option value="twitpic">Twitpic</option>
 									<option value="yfrog">YFrog</option>
 								</select>
-								<br/>
+								<br>
 								<label for="img_code">Image Code</label>
-								<br/>
-								<input type="text" id="img_code" name="img_code">
-								<a class="button small" id="upload_button" href="#imgupload_div">Upload</a>
-								<br/>
+								<br>
+								<input type="text" name="img_code" id="img_code">
+								<a href="#imgupload_div" id="upload_button" class="btn">Upload</a>
+								<br>
 								<label for="vid_source">Video Source</label>
-								<br/>
-								<select id="vid_source" name="vid_source">
+								<br>
+								<select name="vid_source" id="vid_source">
 									<option value="NA">None</option>
 									<option value="youtube">Youtube</option>
 								</select>
-								<br/>
+								<br>
 								<label for="vid_code">Video Code</label>
-								<br/>
-								<input type="text" id="vid_code" name="vid_code">
+								<br>
+								<input type="text" name="vid_code" id="vid_code">
 							</form>
+							</div>
+							<div style="width: 10%;">
+								&nbsp;
+							</div>
+							<div style="width: 40%;">
+								<form id="submit_score" class="form_inline">
+									<label for="score_text">Score</label>
+									<br>
+									<input type="text" name="score_text" id="score_text" class="span3"><br/>
+									<button class="btn btn-success" type="submit">
+									Send
+									</button>
+								</form>
+							</div>
 						</div>
 					</div>
 					<!-- Content Inner End -->
