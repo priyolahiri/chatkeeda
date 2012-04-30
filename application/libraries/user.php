@@ -7,6 +7,12 @@ Class User {
 		$this->usercoll = $db->users;
 		if (!Session::has('chatkeeda_user')) {
 			$this->authstatus = FALSE;
+			if (Session::has('anonid')) {
+					$this->userinfo['username'] = Session::get('anonid');
+			} else {
+					Session::put('anonid', uniqid());
+					$this->userinfo['username'] = Session::get('anonid');
+			}
 		} else {
 			$username = Session::get('chatkeeda_user');
 			$userfind = $this->usercoll->findOne(array("username" => $username));
@@ -19,12 +25,6 @@ Class User {
 				$this->userinfo['role'] 				= $userfind['role'];
 			} else {
 				$this->authstatus = FALSE;
-				if (Session::has('anonid')) {
-					$this->userinfo['username'] = Session::get('anonid');
-				} else {
-					Session::put('anonid', uniqid());
-					$this->userinfo['username'] = Session::get('anonid');
-				}
 			}
 		}
 	}
