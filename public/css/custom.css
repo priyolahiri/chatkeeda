@@ -272,3 +272,127 @@ ul.window li {
 #menu li:hover .nobox a:hover {
     color: #E00118;
 }
+#footer-wrapper {
+    margin: 0 0 80px;
+}
+#footer-wrapper .top {
+    background: url("http://www.sportskeeda.com/wp-content/themes/custom/images/big.png") no-repeat scroll 0 -628px transparent;
+    height: 3px;
+    width: 960px;
+}
+#footer-wrapper .bottom {
+    background: url("http://www.sportskeeda.com/wp-content/themes/custom/images/big.png") no-repeat scroll 0 -614px transparent;
+    height: 4px;
+    width: 960px;
+}
+#footer {
+    background: url("http://www.sportskeeda.com/wp-content/themes/custom/images/footer-bg.png") repeat scroll 0 0 transparent;
+    color: #CCCCCC;
+    font-size: 0.75em;
+}
+#footer .inner {
+    padding: 20px 30px 10px;
+}
+#footer .left {
+    float: left;
+    width: 280px;
+}
+#footer .middle {
+    float: left;
+    margin-left: 30px;
+    width: 280px;
+}
+#footer .right {
+    float: left;
+    margin-left: 30px;
+    width: 280px;
+}
+#footer h2 {
+    border-bottom: 1px solid #181818;
+    font-size: 1.3em;
+    margin: 0;
+    padding: 2px 0 15px;
+    text-transform: uppercase;
+}
+#footer .line {
+    border-top: 1px solid #4C4C4C;
+    display: block;
+    height: 1px;
+    margin-bottom: 15px;
+}
+#footer p {
+    line-height: 1.7em;
+}
+#footer .copyright {
+    background: none repeat scroll 0 0 #202122;
+    border-top: 1px solid #000000;
+    color: #888888;
+    font-size: 0.9em;
+    padding: 10px 30px 8px;
+}
+#footer .widget {
+    padding: 0 0 15px;
+}
+#footer .widget ul {
+    margin: 10px 0 10px 15px;
+}
+#footer .widget ul li {
+    margin: 5px 0;
+}
+#footer .widget table#wp-calendar td {
+    padding: 5px;
+    text-align: center;
+}
+#footer .widget table#wp-calendar th {
+}
+#footer .widget table#wp-calendar caption {
+    color: #999999;
+    margin-top: 10px;
+}
+#footer a.topofpage {
+    background: url("http://www.sportskeeda.com/wp-content/themes/custom/images/big.png") no-repeat scroll 0 -641px transparent;
+    display: block;
+    float: right;
+    height: 35px;
+    width: 26px;
+}
+#footer .widget ul.flickr-thumbs li.first {
+    display: none;
+}
+#footer .recent-reactions {
+    font-size: 1.4em;
+    margin-bottom: 20px;
+}
+#footer .recent-reactions .content {
+    height: 385px;
+    overflow: hidden;
+    padding: 15px 20px 20px;
+}
+#footer .recent-reactions .comment-wrapper {
+    margin-bottom: 18px;
+}
+#footer .recent-reactions a.comment {
+    background: none repeat scroll 0 0 #43464D;
+    border: 1px solid #565C63;
+    color: #D4D4D4;
+    display: block;
+    font-size: 0.7em;
+    height: 50px;
+    line-height: 1.4em;
+    overflow: hidden;
+    padding: 8px 5px 7px 8px;
+}
+#footer .recent-reactions a.comment:hover {
+    border: 1px solid #636A72;
+    color: #FFFFFF;
+}
+#footer .recent-reactions a.author {
+    background: url("http://www.sportskeeda.com/wp-content/themes/custom/images/big.png") no-repeat scroll 0 -1625px transparent;
+    color: #999999;
+    display: block;
+    font-size: 0.7em;
+    margin-top: -1px;
+    padding: 3px 0 0 29px;
+    position: relative;
+    z-index: 10;
+}
