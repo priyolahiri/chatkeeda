@@ -12,63 +12,61 @@
 		<link rel="stylesheet" type="text/css" href="/css/custom.css" media="all" />
 		<script language="JavaScript">
 			$(function() {
-				chatInit();
-				<?php
-				if ($chat->chatinfo['live']) {
-					echo "
-					pusher = new Pusher('$chat->pusherKey');
-					Pusher.channel_auth_endpoint = '/chatauth/$chat->chatslug';
-					channel = pusher.subscribe('$chat->pusherChannel');
-					";
-				}
-				?>
-			})
-			function chatInit() {
-				<?php
-				if (!$chat->chatinfo['live']) {
-				?>
-				
-				<?php
-				} else {
-				?>
-				$.ajax({
-					url: '/chatnow/<?php echo($chat->chatinfo['slug']) ?>',
-						type: 'POST',
-						dataType: 'json',
-						success: function(data) {
-							console.log(data);
-							if (data.admin) {
-								channel.bind('pusher:subscription_succeeded', function(members) {
-									var onlinetext = members.count + ' user(s) online';
-									$('#online_contacts').append(onlinetext);
-									members.each(function(member) {
-										$('#contacts_window ul.window').append('<li class="well"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
-									});
-								});
-								channel.bind('pusher:member_added', function(member) {
-									$('#contacts_window ul.window').append('<li class="well"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
-								});
-								channel.bind('chat', function(data){
-									var chattime = data.timenow;
-									var chatmsg = data.msg;
-									var output = '<tr><td class="col-gray" width="8%">'+chattime+'</td>';
-									var output2 = '<td>'+chatmsg+'</td></tr>';
-									$('#chat_main_inner table tbody').append(output+output2);
-									var elem = document.getElementById('chat_main_inner');
-  									elem.scrollTop = elem.scrollHeight;
-								});
-							}
-						},
-						error: function(data) {
-							console.log(data);
-						}
-				})
-				<?php
-				}
-				?>
-			}
+chatInit();<?php
+if ($chat -> chatinfo['live']) {
+	echo "
+pusher = new Pusher('$chat->pusherKey');
+Pusher.channel_auth_endpoint = '/chatauth/$chat->chatslug';
+channel = pusher.subscribe('$chat->pusherChannel');
+";
+}
+?>
+	})
+function chatInit() {<?php
+if (!$chat->chatinfo['live']) {
+?><?php
+} else {
+?>
+	$.ajax({
+url: '/chatnow/<?php echo($chat->chatinfo['slug']) ?>
+	',
+	type: 'POST',
+	dataType: 'json',
+	success: function(data) {
+	console.log(data);
+	if (data.admin) {
+	channel.bind('pusher:subscription_succeeded', function(members) {
+	var onlinetext = members.count + ' user(s) online';
+	$('#online_contacts').append(onlinetext);
+	members.each(function(member) {
+	$('#contacts_window ul.window').append('<li class="well"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
+	});
+	});
+	channel.bind('pusher:member_added', function(member) {
+	$('#contacts_window ul.window').append('<li class="well"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
+	});
+	channel.bind('chat', function(data){
+	var chattime = data.timenow;
+	var chatmsg = data.msg;
+	var output = '<tr><td class="col-gray" width="8%">'+chattime+'</td>';
+	var output2 = '<td>'+chatmsg+'</td></tr>';
+	$('#chat_main_inner table tbody').append(output+output2);
+	var elem = document.getElementById('chat_main_inner');
+	elem.scrollTop = elem.scrollHeight;
+	});
+	}
+	},
+	error: function(data) {
+	console.log(data);
+	}
+	})
+<?php
+}
+?>
+	}
 		</script>
-		<title>ChatKeeda | <?php echo ($chat->chatinfo['name']) ?></title>
+		<title>ChatKeeda | <?php echo ($chat->chatinfo['name'])
+			?></title>
 	</head>
 	<body>
 		<!-- Page Container Begin -->
@@ -1282,22 +1280,58 @@ jQuery('.tab#'+stringref).fadeIn();return false;});
 					<!-- Content Inner Begin -->
 					<div id="content_inner" class="well">
 						<ul class="breadcrumb">
-  							<li>
-    								<a href="/">ChatKeeda</a>
-    								<span class="divider">/</span>
-  							</li>
-  							<li class="active">
-    								<a href="#"><?php echo ($chat->chatinfo['name']) ?></a>
-  							</li>
+							<li>
+								<a href="/">ChatKeeda</a>
+								<span class="divider">/</span>
+							</li>
+							<li class="active">
+								<a href="#"><?php echo ($chat->chatinfo['name'])
+								?></a>
+							</li>
 						</ul>
-						<h2><?php echo ($chat->chatinfo['name']) ?></h2>
+						<h2><?php echo ($chat->chatinfo['name'])
+						?></h2>
 						<hr/>
 						<div class="well" id="chat_window">
 							<ul class="window"></ul>
 						</div>
 						<div class="clearfix"></div>
 						<div class="well" id="comm_window">
-							&nbsp;
+							<form id="submit_chat"  enctype="multipart/form-data">
+								<label for="chat_text">Text</label>
+								<br/>
+								<textarea id="chat_text" name="chat_text"></textarea>
+								<button type="submit" class="small green">
+									Send
+								</button>
+								<br/>
+								<a id="setdispname_link" href="#">Set Display Name</a>
+								<br/>
+								<label for="img_source">Image Source</label>
+								<br/>
+								<select id="img_source" name="img_source">
+									<option value="NA">None</option>
+									<option value="upload">Upload</option>
+									<option value="twitpic">Twitpic</option>
+									<option value="yfrog">YFrog</option>
+								</select>
+								<br/>
+								<label for="img_code">Image Code</label>
+								<br/>
+								<input type="text" id="img_code" name="img_code">
+								<a class="button small" id="upload_button" href="#imgupload_div">Upload</a>
+								<br/>
+								<label for="vid_source">Video Source</label>
+								<br/>
+								<select id="vid_source" name="vid_source">
+									<option value="NA">None</option>
+									<option value="youtube">Youtube</option>
+								</select>
+								<br/>
+								<label for="vid_code">Video Code</label>
+								<br/>
+								<input type="text" id="vid_code" name="vid_code">
+							</form>
 						</div>
 					</div>
 					<!-- Content Inner End -->
@@ -1308,7 +1342,9 @@ jQuery('.tab#'+stringref).fadeIn();return false;});
 					<div id="sidebar_inner" class="well">
 						<a href="/logout" class="btn btn-primary">Logout</a>
 						<hr/>
-						<button id="finish_chat">Finish Chat</button>
+						<button id="finish_chat">
+							Finish Chat
+						</button>
 						<hr/>
 						<p align="center">
 							<span id="online_contacts" class="label label-success"></span>
@@ -1446,7 +1482,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});
 					</div>
 				</div>
 			</div>
-			<!-- Footer End -->	
+			<!-- Footer End -->
 		</div>
 		<!-- Page Container End -->
 	</body>
