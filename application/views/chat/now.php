@@ -40,7 +40,7 @@
 							if (data.admin) {
 								channel.bind('pusher:subscription_succeeded', function(members) {
 									var onlinetext = members.count + ' user(s) online';
-									$('#contacts_window ul.window').append('<li class="well">'+onlinetext+'</li>');
+									$('#online_contacts').append('<li class="well">'+onlinetext+'</li>');
 									members.each(function(member) {
 										$('#contacts_window ul.window').append('<li class="well"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
 									});
@@ -1310,6 +1310,9 @@ jQuery('.tab#'+stringref).fadeIn();return false;});
 						<hr/>
 						<button id="finish_chat">Finish Chat</button>
 						<hr/>
+						<p align="center">
+							<span id="online_contacts" class="label label-success"></span>
+						</p>
 						<div class="well" id="contacts_window">
 							<ul class="window"></ul>
 						</div>
