@@ -1290,7 +1290,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});
 			<!-- Footer Begin -->
 			<div class="row">
 				<div class="span12">
-					<div id="foot_contain" style="margin: auto; width: 960px;">
+					<div id="foot_contain" style="width: 960px;">
 						<div id="footer-wrapper">
 				<div class="top">&nbsp;</div>
 				<div id="footer"> 
