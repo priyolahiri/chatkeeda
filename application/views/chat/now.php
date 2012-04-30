@@ -24,6 +24,13 @@
 				?>
 			})
 			function chatInit() {
+				<?php
+				if (!$chat->chatinfo['live']) {
+				?>
+				
+				<?php
+				} else {
+				?>
 				$.ajax({
 					url: '/chatnow/<?php echo($chat->chatinfo['slug']) ?>',
 						type: 'POST',
@@ -35,11 +42,20 @@
 									var onlinetext = members.count + ' user(s) online';
 									$('#contacts_window ul.window').append('<li class="well">'+onlinetext+'</li>');
 									members.each(function(member) {
-										$('#contacts_window ul.window').append('<li class="well">'+member.info.username+'<br/>'+member.info.role+'</li>');
+										$('#contacts_window ul.window').append('<li class="well"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
 									});
 								});
 								channel.bind('pusher:member_added', function(member) {
-								
+									$('#contacts_window ul.window').append('<li class="well"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
+								});
+								channel.bind('chat', function(data){
+									var chattime = data.timenow;
+									var chatmsg = data.msg;
+									var output = '<tr><td class="col-gray" width="8%">'+chattime+'</td>';
+									var output2 = '<td>'+chatmsg+'</td></tr>';
+									$('#chat_main_inner table tbody').append(output+output2);
+									var elem = document.getElementById('chat_main_inner');
+  									elem.scrollTop = elem.scrollHeight;
 								});
 							}
 						},
@@ -47,6 +63,9 @@
 							console.log(data);
 						}
 				})
+				<?php
+				}
+				?>
 			}
 		</script>
 		<title>ChatKeeda | <?php echo ($chat->chatinfo['name']) ?></title>
