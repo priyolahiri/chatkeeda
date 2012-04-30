@@ -19,6 +19,12 @@ Class User {
 				$this->userinfo['role'] 				= $userfind['role'];
 			} else {
 				$this->authstatus = FALSE;
+				if (Session::has('anonid')) {
+					$this->userinfo['username'] = Session::get('anonid');
+				} else {
+					Session::put('anonid', uniqid());
+					$this->userinfo['username'] = Session::get('anonid');
+				}
 			}
 		}
 	}
