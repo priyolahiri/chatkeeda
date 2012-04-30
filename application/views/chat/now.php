@@ -40,7 +40,7 @@
 							if (data.admin) {
 								channel.bind('pusher:subscription_succeeded', function(members) {
 									var onlinetext = members.count + ' user(s) online';
-									$('#online_contacts').append('<li class="well">'+onlinetext+'</li>');
+									$('#online_contacts').append(onlinetext);
 									members.each(function(member) {
 										$('#contacts_window ul.window').append('<li class="well"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
 									});
