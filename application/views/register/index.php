@@ -1280,7 +1280,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});
 			</div>
 			<!-- Body End -->
 			<!-- Footer Begin -->
-			<div class="row" id="footer">
+			<div class="row" id="footer_container">
 				<div class="span12" id="footer_1">
 					<div id="footer-wrapper"> 
     <div class="top">&nbsp;</div> 
