@@ -39,13 +39,52 @@ Route::post('chataction/(:any)/(:any)', function($slug, $action) {
 	$chat->initChat($slug);
 	$chatinfo = $chat->chatinfo;
 	$chatauth = $chat->authChat();
+	
+	//start of sendchat action
 	if ($action == "sendchat") {
 		if ($chatauth['admin'] or $chatauth['superadmin'] or $chatauth['role'] == "normal") {
-			return json_encode(array("success" => TRUE, "msg" => "Message posted"));
+			$posttext = Input::get('chat_text');
+			$postimgsrc = Input::get('img_source');
+			$postimgcode = Input::get('img_code');
+			$postvidsrc = Input::get('vid_source');
+			$postvidcode = Input::get('vid_code');
+			if (!$posttext and !$postimgcode and !$postvidcode) {
+				return json_encode(array('success' => FALSE, 'msg' => 'Please enter something. You cannot send a blank chat'));
+			}
+			if (!$postimgsrc=="NA" and !$postimgcode) {
+				return json_encode(array('success' => FALSE, 'msg' => 'Please enter valid image code.'));
+			}
+			if (!$postvidsrc=="NA" and !$postvidcode) {
+				return json_encode(array('success' => FALSE, 'msg' => 'Please enter valid video code.'));
+			}
+			$name = $chatauth['username'];
+			$msg = "<b>".$name . " :</b> ";
+			$msg .= $posttext ? $posttext.'<br/>' : '';
+			if ($postimgsrc=='twitpic') {
+				$msg.="<a href='http://twitpic.com/$postimgcode' target='_blank'><img src='http://twitpic.com/show/thumb/$postimgcode' /></a><br/>";
+			}
+			if ($postimgsrc=='yfrog') {
+				$msg.="<a href='http://yfrog.com/$postimgcode' target='_blank'><img src='http://yfrog.com/$postimgcode:small' /></a><br/>";
+			}
+			if ($postimgsrc=='upload') {
+				$msg.="<a href='$postimgcode' target='_blank'><img class='custom_post' src='$postimgcode' /></a><br/>";
+			}
+			if ($postvidsrc=='youtube') {
+				$msg.="<iframe width='320' height='240' src='http://chatapp.priyolahiri.co.cc/embed/$postvidcode' frameborder='0' allowfullscreen></iframe>";
+			}
+			if (!$chatauth['superadmin'] or !$chatauth['admin']) {
+				$chat->addMsg($msg);
+				$post_status = "Message Posted";
+			} else {
+				$chat->addMsgMod($msg);
+				$post_status = "Message Posted for Moderation";
+			}
+			return json_encode(array("success" => TRUE, "msg" => $post_status));
 		} else {
 			return json_encode(array("success" => FALSE, "msg" => "You do not have permissions to post."));
 		}
   	}
+	//end of sendchat action
 });
 Event::listen('404', function()
 {

@@ -36,7 +36,7 @@ Class Chat {
 			$this->pusherKey = PUSHERKEY;
 			$this->pusherChannel = "presence-".$chatid;
 			$this->pusherModChannel = "presence-".$chatid."-moderate";
-			$this->chatcollet = new Rediska_Key_List($chatid."_chat");
+			$this->chatset = new Rediska_Key_List($chatid."_chat");
 			$this->modchatset = new Rediska_Key_List($chatid."_chat_moderate");
 			if ($score) {
 				$this->chatscore = new Rediska_Key_List($chatid."_score");
@@ -44,6 +44,19 @@ Class Chat {
 			return true;
 		}
 		return false;
+	}
+	public function addMsg($msg) {
+		$timenow = date('H:i', time());
+		$transport = json_encode(array('timenow' => $timenow, 'msg' => $msg));
+		$this->chatset[] = $transport;
+		$this->pusher->trigger($this->pusherChannel, 'chat', $transport, null, false, true);
+	}
+	public function addMsgMod($msg) {
+		$timenow = date('H:i', time());
+		$transport = json_encode(array('timenow' => $timenow, 'msg' => $msg));
+		$this->modchatset[] = $transport;
+		$transport2 = json_encode(array("postedmod" => TRUE));
+		$this->pusher->trigger($this->pusherChannel, 'newmodmsg', $transport2, null, false, true);
 	}
 	public function authChat() {
 		if ($this->authstatus) {

@@ -34,11 +34,10 @@ $chatuser = $chat->authChat();
 						channel.bind('chat', function(data){
 							var chattime = data.timenow;
 							var chatmsg = data.msg;
-							var output = '<tr><td class="col-gray" width="8%">'+chattime+'</td>';
-							var output2 = '<td>'+chatmsg+'</td></tr>';
-							$('#chat_main_inner table tbody').append(output+output2);
-								var elem = document.getElementById('chat_main_inner');
-								elem.scrollTop = elem.scrollHeight;
+							var output = '<li class="well"><span class="label label-success">'+chattime+'</span>'+chatmsg+'</li>';
+							$('#chat_window ul.window').append(output);
+							var elem = document.getElementById('chat_window');
+							elem.scrollTop = elem.scrollHeight;
 							});
 						},
 					error: function(data) {
