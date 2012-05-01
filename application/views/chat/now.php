@@ -24,8 +24,9 @@ $chatuser = $chat->authChat();
 					success: function(data) {
 						console.log(data);
 						_.each(data, function(oldchat) {
-							var chattime = oldchat.timenow;
-							var chatmsg = oldchat.msg;
+							var oldobj = jQuery.parseJSON(oldchat);
+							var chattime = oldobj.timenow;
+							var chatmsg = oldobj.msg;
 							var output = '<li class="well"><span class="label label-success">'+chattime+'</span>&nbsp;&nbsp;'+chatmsg+'</li>';
 							$('#chat_window ul.window').append(output);
 						});
