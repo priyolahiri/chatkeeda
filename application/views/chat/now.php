@@ -118,8 +118,18 @@ $chatuser = $chat->authChat();
 									type: 'POST',
 									dataType: 'json',
 									success: function(data) {
-										console.log(data);
-										//approve fetch
+										var co = 0;
+									_.each(data, function(oldmsg) {
+										var oldobj = jQuery.parseJSON(oldmsg);
+										co = co + 1;
+										var chattime = oldobj.timenow;
+										var chatmsg = oldobj.msg;
+										var memid = oldobj.key;
+										var output = '<li class="well"><span class="label label-success">'+chattime+'</span>&nbsp;&nbsp;'+chatmsg+'<button class="small green app_comment" onclick="approve('+co+')">approve</button>'+'</li>';
+										$('#approve_window ul.window').html(output);
+										var elem = document.getElementById('approve_window');
+										elem.scrollTop = elem.scrollHeight;
+									});
 									}
 								});
 							});
