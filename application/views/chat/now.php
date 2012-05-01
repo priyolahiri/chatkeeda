@@ -10,6 +10,7 @@ $chatuser = $chat->authChat();
 		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="/js/underscore.min.js"></script>
 		<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
+		<script type="text/javascript" src="/js/jquery.fancybox-1.3.4.pack.js"></script>
 		<script type="text/javascript" src="/js/jquery.easing-1.3.pack.js"></script>
 		<script type="text/javascript" src="/js/jquery.mousewheel-3.0.4.pack.js"></script>
 		<script type="text/javascript" src="/js/jquery.prettyLoader.js"></script>
