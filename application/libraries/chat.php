@@ -3,6 +3,7 @@ Class Chat {
 	public function __construct() {
 		$user = New User;
 		$this->userinfo = $user->returnUser();
+		$this->authstatus = $user->returnStatus();
 		$mongo = new Mongo(MONGOHOST);
 		$db = $mongo->chatkeeda;	
 		$this->chatcoll = $db->chats;
@@ -45,7 +46,7 @@ Class Chat {
 		return false;
 	}
 	public function authChat() {
-		if ($this->userinfo) {
+		if ($this->authstatus) {
 			$auth = true;
 			if ($this->userinfo['username'] == $this->chatinfo['creator']) {
 				$creator = true;
@@ -71,7 +72,8 @@ Class Chat {
 			if (Session::has("anonid")) {
 				$username = Session::get("anonid");
 			} else {
-				$username = uniqid();
+				Session::put('anonid', uniqid());
+				$username = Session::get("anonid");
 			}
 			$role = "anonymous";
 			$admin = false;
