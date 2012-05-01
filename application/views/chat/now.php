@@ -9,10 +9,12 @@ $chatuser = $chat->authChat();
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="/js/underscore.min.js"></script>
+		<script type="text/javascript" src="/js/jquery.noty.js"></script>
 		<script src="http://js.pusher.com/1.11/pusher.min.js" type="text/javascript"></script>
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/font-awesome.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/custom.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="/css/jquery.noty.css" media="all" />
 		<script language="JavaScript">
 			$(function() {
 chatInit();<?php
@@ -1299,7 +1301,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 						<div class="clearfix"></div>
 						
 						<?php
-						if ($chatuser['admin'] or $chatuser['superadmin']) {
+						if (($chatuser['admin'] or $chatuser['superadmin']) and $chat->chatinfo['live']) {
 						?>
 						<div class="well" id="comm_window">
 							<div style="width: 50%; clear: none; display: inline; float: left;">
@@ -1336,6 +1338,31 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 								<input type="text" name="vid_code" id="vid_code">
 							</form>
 							</div>
+							<script language="javascript">
+								$(function() {
+									$('#submit_chat').submit(function(e) {
+										e.preventDefault();
+										var postdata = $('#submit_chat').serialize();
+										$.ajax({
+											url: '/chataction/<?php echo($chat->chatinfo['slug']) ?>/sendchat',
+											dataType: 'json',
+											type: 'POST',
+											data: postdata,
+											success: function(data) {
+												var msg = data;
+												if (msg.success) {
+													noty({"text":msg.msg,"layout":"topRight","type":"success","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+													$('#submit_chat').each (function(){
+  														this.reset();
+													});
+												} else {			
+													noty({"text": msg.msg,"layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+												}
+											}
+										})
+									})
+								});
+							</script>
 							<?php
 							if ($chat->chatinfo['score']) {
 							?>
@@ -1349,6 +1376,31 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									</button>
 								</form>
 							</div>
+							<script language="javascript">
+								$(function() {
+									$('#submit_score').submit(function(e) {
+										e.preventDefault();
+										var postdata = $('#submit_score').serialize();
+										$.ajax({
+											url: '/chataction/<?php echo($chat->chatinfo['slug']) ?>/sendscore',
+											dataType: 'json',
+											type: 'POST',
+											data: postdata,
+											success: function(data) {
+												var msg = data;
+												if (msg.success) {
+													noty({"text":msg.msg,"layout":"topRight","type":"success","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+													$('#submit_chat').each (function(){
+  														this.reset();
+													});
+												} else {			
+													noty({"text": msg.msg,"layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+												}
+											}
+										})
+									})
+								});
+							</script>
 							<?php
 							}
 							?>

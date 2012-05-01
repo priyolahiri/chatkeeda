@@ -35,7 +35,17 @@ Route::post('chatauth/(:any)', function($slug) {
 	return $pusher->presence_auth($_POST['channel_name'], $_POST['socket_id'], $presence_data['user_id'], $presence_data);
 });
 Route::post('chataction/(:any)/(:any)', function($slug, $action) {
-	
+	$chat = new Chat;
+	$chat->initChat($slug);
+	$chatinfo = $chat->chatinfo;
+	$chatauth = $chat->authChat();
+	if ($action == "sendchat") {
+		if ($chatauth['admin'] or $chatauth['superadmin'] or $chatauth['role'] == "normal") {
+			return json_encode(array("success" => TRUE, "msg" => "Message posted"));
+		} else {
+			return json_encode(array("success" => FALSE, "msg" => "You do not have permissions to post."));
+		}
+  	}
 });
 Event::listen('404', function()
 {
