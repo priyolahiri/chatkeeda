@@ -1412,17 +1412,6 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 												</div>
 											</div>
 											<br class="clearer">
-											<div class="widget">
-												<div class="line">
-													&nbsp;
-												</div>
-												<div class="textwidget">
-													<div perms="publish_stream,publish_actions" data-mode="button" data-show-faces="false" class="fb-add-to-timeline  fb_iframe_widget ">
-														<span style="height: 17px; width: 300px;"><iframe scrolling="no" id="f3d176accbb4e36" name="f9d4eaf112e1ee" style="border: medium none; overflow: hidden; height: 17px; width: 300px;" class="fb_ltr" src="http://www.facebook.com/plugins/add_to_timeline.php?action=like&amp;add_to_profile=true&amp;api_key=305340076146905&amp;channel=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D5%23cb%3Df302151ec54e2ea%26origin%3Dhttp%253A%252F%252Fwww.sportskeeda.com%252Ffc4277602a7c04%26domain%3Dwww.sportskeeda.com%26relation%3Dparent.parent&amp;colorscheme=light&amp;extended_social_context=false&amp;locale=en_US&amp;login_text=&amp;mode=button&amp;scope=publish_stream%2Cpublish_actions&amp;sdk=joey&amp;show_faces=false&amp;show_login_face=false&amp;size=small&amp;tense=past&amp;width=200"></iframe></span>
-													</div>
-												</div>
-											</div>
-
 										</div>
 									</div>
 									<div class="middle">
