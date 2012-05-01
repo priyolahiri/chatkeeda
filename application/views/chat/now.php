@@ -47,7 +47,7 @@ $chatuser = $chat->authChat();
 				?>
 				$.ajax({
 									url: '/chataction/<?php echo($chat->chatslug) ?>/getscore',
-									type: 'GET',
+									type: 'POST',
 									dataType: 'json',
 									success: function(data) {
 										console.log(data);
