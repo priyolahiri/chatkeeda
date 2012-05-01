@@ -128,6 +128,18 @@ Route::post('chataction/(:any)/(:any)', function($slug, $action) {
 		return json_encode($chat->getScore());
 	}
 	//end of getscore function
+	
+	//start of sendscore action
+	if ($action == "sendscore") {
+		if ($chatauth['admin'] or $chatauth['superadmin']) {
+			$score = Input::get('score');
+			$chat->setScore($score);
+			return json_encode(array("success" => true, "msg" => "Score updated!"));
+		} else {
+			return json_encode(array("success" => false, "msg" => "You don't have priviledges to update score.'"));
+		}
+	}
+	//end of sendscore action
 });
 Event::listen('404', function()
 {

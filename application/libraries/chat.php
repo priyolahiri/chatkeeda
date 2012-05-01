@@ -68,6 +68,15 @@ Class Chat {
 		 	return array();
 		}
 	}
+	public function setScore($score) {
+		$newtransport = json_encode(array('score' => $score));
+		if (isset($this->chatscore[0])) {
+			$this->chatscore[0] = $newtransport;
+		} else {
+			$this->chatscore[] = $newtransport;
+		}
+		$this->pusher->trigger($this->pusherChannel, 'score', $newtransport, null, false, true);
+	}
 	public function authChat() {
 		if ($this->authstatus) {
 			$auth = true;
