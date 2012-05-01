@@ -23,6 +23,7 @@ $chatuser = $chat->authChat();
 		<link rel="stylesheet" type="text/css" href="/css/jquery.noty.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/custom.css" media="all" />
 		<script language="JavaScript">
+		membername = '<?php echo ($chatuser['username']) ?>';
 			$(function() {
 				$.prettyLoader();
 				$.ajax({
