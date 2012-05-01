@@ -22,6 +22,7 @@ $chatuser = $chat->authChat();
 					type: 'POST',
 					dataType: 'json',
 					success: function(data) {
+						console.log(data);
 						_.each(data, function(oldchat) {
 							var chattime = oldchat.timenow;
 							var chatmsg = oldchat.msg;
