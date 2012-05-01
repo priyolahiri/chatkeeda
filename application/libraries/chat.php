@@ -38,9 +38,7 @@ Class Chat {
 			$this->pusherModChannel = "presence-".$chatid."-moderate";
 			$this->chatset = new Rediska_Key_List($chatid."_chat");
 			$this->modchatset = new Rediska_Key_List($chatid."_chat_moderate");
-			if ($score) {
-				$this->chatscore = new Rediska_Key_List($chatid."_score");
-			}
+			$this->chatscore = new Rediska_Key_List($chatid."_score");
 			return true;
 		}
 		return false;
@@ -69,6 +67,7 @@ Class Chat {
 		}
 	}
 	public function setScore($score) {
+		error_log("Score: ".$score);
 		$newtransport = json_encode(array('score' => $score));
 		if (isset($this->chatscore[0])) {
 			$this->chatscore[0] = $newtransport;
