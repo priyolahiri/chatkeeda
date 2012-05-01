@@ -102,10 +102,10 @@ Route::post('chataction/(:any)/(:any)', function($slug, $action) {
 			if ($postvidsrc=='youtube') {
 				$msg.="<iframe width='320' height='240' src='http://chatapp.priyolahiri.co.cc/embed/$postvidcode' frameborder='0' allowfullscreen></iframe>";
 			}
-			if (!$chatauth['superadmin'] or !$chatauth['admin']) {
+			if ($chatauth['superadmin'] or $chatauth['admin']) {
 				$chat->addMsg($msg);
 				$post_status = "Message Posted";
-			} else {
+			} else if (!$chatauth['superadmin'] and !$chatauth['admin']) {
 				$chat->addMsgMod($msg);
 				$post_status = "Message Posted for Moderation";
 			}
