@@ -1566,7 +1566,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 								});
 							}
 						</script>
-						<button id="finish_chat" onlick="finishcat()">
+						<button id="finish_chat" onlick="finishchat()">
 							Finish Chat
 						</button>
 						<hr/>
