@@ -43,6 +43,27 @@ $chatuser = $chat->authChat();
 					}
 				});
 				<?php
+				if ($chat->chatinfo['score']) {
+				?>
+				$.ajax({
+									url: '/chataction/<?php echo($chat->chatslug) ?>/getscore',
+									type: 'GET',
+									dataType: 'json',
+									success: function(data) {
+										console.log(data);
+										if (data.score) {
+											$('chatscore_label').html('Score: '+data.score);
+										}
+									}
+								});
+								channel.bind('score', function(data){
+									console.log(data);
+									if (data.score) {
+										$('chatscore_label').html('Score: '+data.score);
+									}
+								});
+				<?php
+				}
 					if ($chat -> chatinfo['live']) {
 					echo "
 					pusher = new Pusher('$chat->pusherKey');
@@ -1305,27 +1326,6 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 							<h6>Score</h6><hr/>
 							<span class="label label-warning" id="chatscore_label">None added yet</span>
 						</div>
-						<script language="javascript">
-							$(function() {
-								$.ajax({
-									url: '/chataction/<?php echo($chat->chatslug) ?>/getscore',
-									type: 'GET',
-									dataType: 'json',
-									success: function(data) {
-										console.log(data);
-										if (data.score) {
-											$('chatscore_label').html('Score: '+data.score);
-										}
-									}
-								});
-								channel.bind('score', function(data){
-									console.log(data);
-									if (data.score) {
-										$('chatscore_label').html('Score: '+data.score);
-									}
-								});
-							});
-						</script>
 						<?
 						}
 						?>
