@@ -85,6 +85,9 @@ Route::post('chataction/(:any)/(:any)', function($slug, $action) {
 		}
   	}
 	//end of sendchat action
+	if ($action=="getoldchat") {
+		return json_encode($chat->getChat());
+	}
 });
 Event::listen('404', function()
 {

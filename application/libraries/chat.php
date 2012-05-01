@@ -58,6 +58,9 @@ Class Chat {
 		$transport2 = json_encode(array("postedmod" => TRUE));
 		$this->pusher->trigger($this->pusherChannel, 'newmodmsg', $transport2, null, false, true);
 	}
+	public function getChat() {
+		return $this->chatset->toArray(true);
+	}
 	public function authChat() {
 		if ($this->authstatus) {
 			$auth = true;
