@@ -1614,7 +1614,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									}
 									?>
 									var showrole = ""
-									if (member.admin or member.superadmin) {
+									if (member.admin || member.superadmin) {
 										showrole = "admin";
 									} else {
 										showrole = "normal";
@@ -1641,7 +1641,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									}
 									?>
 									var showrole = ""
-									if (member.admin or member.superadmin) {
+									if (member.admin || member.superadmin) {
 										showrole = "admin";
 									} else {
 										showrole = "normal";
