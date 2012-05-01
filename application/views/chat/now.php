@@ -1369,7 +1369,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
                     							alert(e);
                 							}
             						});
-        							return false;
+        							return true;
 							}
 							</script>
 							</div>
