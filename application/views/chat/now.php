@@ -52,7 +52,7 @@ $chatuser = $chat->authChat();
 					success: function(data) {
 					console.log(data);
 						if (data.score) {
-							$('chatscore_label').html('Score: '+data.score);
+							$('#chatscore_label').html('Score: '+data.score);
 						}
 					}
 				});
@@ -85,7 +85,7 @@ $chatuser = $chat->authChat();
 						channel.bind('score', function(data){
 							console.log(data);
 							if (data.score) {
-								$('chatscore_label').html('Score: '+data.score);
+								$('#chatscore_label').html('Score: '+data.score);
 							}
 						});
 						<?php
