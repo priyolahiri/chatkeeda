@@ -34,7 +34,7 @@ Route::post('chatauth/(:any)', function($slug) {
 	error_log('chatauth');
 	return $pusher->presence_auth($_POST['channel_name'], $_POST['socket_id'], $presence_data['user_id'], $presence_data);
 });
-Route::get('/embed/(:any)', function($vidid) {
+Route::get('embed/(:any)', function($vidid) {
 	$url = "http://www.youtube.com/embed/$vidid";
 	$crl = curl_init();
     $timeout = 5;
