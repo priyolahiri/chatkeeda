@@ -1605,10 +1605,10 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									if ($chatuser['creator']) {
 									?>
 									if (member.info.role == "normal" && member.info.admin == false && member.info.superadmin == false && member.id != membername) {
-										var addl = '<br/><button class="btn small" onlick=' + "'makeadmin("+'"'+member.id+'"'+")'>Make Admin</button>'";
+										var addl = '<br/><button class="btn small" onclick=' + '"makeadmin('+"'"+member.id+"'"+"')"+'">Make Admin</button>';
 									}
 									if (member.info.role == "normal" && member.info.admin == true && member.info.superadmin == false && member.id != membername) {
-										var addl = '<br/><button class="btn small" onlick=' + "'revokeadmin("+'"'+member.id+'"'+")'>Revoke Admin</button>'";
+										var addl = '<br/><button class="btn small" onclick=' + '"revokeadmin('+"'"+member.id+"'"+"')"+'">Revoke Admin</button>';
 									}
 									<?php
 									}
@@ -1626,10 +1626,10 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									if ($chatuser['creator']) {
 									?>
 									if (member.info.role == "normal" && member.info.admin == false && member.info.superadmin == false && member.id != membername) {
-										var addl = '<br/><button class="btn small" onlick=' + "'makeadmin("+'"'+member.id+'"'+")'>Make Admin</button>'";
+										var addl = '<br/><button class="btn small" onclick=' + '"makeadmin('+"'"+member.id+"'"+"')"+'">Make Admin</button>';
 									}
 									if (member.info.role == "normal" && member.info.admin == true && member.info.superadmin == false && member.id != membername) {
-										var addl = '<br/><button class="btn small" onlick=' + "'revokeadmin("+'"'+member.id+'"'+")'>Revoke Admin</button>'";
+										var addl = '<br/><button class="btn small" onclick=' + '"revokeadmin('+"'"+member.id+"'"+"')"+'">Revoke Admin</button>';
 									}
 									<?php
 									}
