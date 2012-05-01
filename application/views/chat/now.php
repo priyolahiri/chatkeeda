@@ -1613,7 +1613,13 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									<?php
 									}
 									?>
-									$('#contacts_window ul.window').append('<li class="well" id="member_'+member.id+'"><b>'+member.info.username+'</b><br/>'+member.info.role+addl+'</li>');
+									var showrole = ""
+									if (member.admin or member.superadmin) {
+										showrole = "admin";
+									} else {
+										showrole = "normal";
+									}
+									$('#contacts_window ul.window').append('<li class="well" id="member_'+member.id+'"><b>'+member.info.username+'</b>&nbsp; '+showrole+addl+'</li>');
 								});
 							});
 							channel.bind('pusher:member_added', function(member) {
@@ -1634,7 +1640,13 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									<?php
 									}
 									?>
-								$('#contacts_window ul.window').append('<li class="well" id="member_'+member.id+'"><b>'+member.info.username+'</b><br/>'+member.info.role+addl+'</li>');
+									var showrole = ""
+									if (member.admin or member.superadmin) {
+										showrole = "admin";
+									} else {
+										showrole = "normal";
+									}
+								$('#contacts_window ul.window').append('<li class="well" id="member_'+member.id+'"><b>'+member.info.username+'</b>&nbsp; '+showrole+addl+'</li>');
 							});
 							channel.bind('pusher:member_removed', function(member) {
 								console.log('member removed' + member.id);
