@@ -1559,14 +1559,13 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									url: '/chataction/<?php echo($chat->chatinfo['slug']) ?>/finish',
 									dataType: 'json',
 									type: 'POST',
-									data: postdata,
 									success: function(data) {
 										location.reload(true);	
 									}
 								});
 							}
 						</script>
-						<button id="finish_chat" onlick="finishchat()">
+						<button id="finish_chat" onclick="finishchat()">
 							Finish Chat
 						</button>
 						<hr/>
