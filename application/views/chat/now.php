@@ -1553,7 +1553,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 						<hr/>
 						
 						<?php
-						if (($chatuser['creator'] or $chatuser['superadmin']) and $chat->chatinfo['ive']) {
+						if (($chatuser['creator'] or $chatuser['superadmin']) and $chat->chatinfo['live']) {
 						?>
 						<script type="text/javascript">
 							function finishchat() {
