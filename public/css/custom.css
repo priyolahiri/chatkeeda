@@ -397,5 +397,7 @@ ul.window li {
     z-index: 10;
 }
 img.custom_post {
-	max-width: 300px;
+	max-width: 200px;
+	clear: both;
+	padding: 5px;
 }
