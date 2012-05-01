@@ -192,6 +192,16 @@ Route::post('chataction/(:any)/(:any)', function($slug, $action) {
 		}
 	}
 	//end of revokeadmin section
+	
+	//start of finish chat section
+	if (action == "finishchat") {
+		if ($chatauth['creator'] or $chatauth['superadmin']) {
+			return json_encode($chat->finishChat());
+		} else {
+			return json_encode(array("success" => false, "msg" => "You don't have the priviledges to finish chat.''"));
+		}
+	}
+	//end of finish chat section
 });
 Event::listen('404', function()
 {

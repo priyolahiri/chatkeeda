@@ -109,6 +109,12 @@ Class Chat {
 		$this->pusher->trigger($this->pusherChannel, 'revokedadmin', $newtransport, null, false, true);
 		return array("success" => true);
 	}
+	public function finishChat() {
+		$this->chatcoll->update(array("slug" => $this->chatinfo['slug']), array('$set' => array("live" => FALSE, "end" => time())));
+		$newtransport = json_encode(array("chatend" => TRUE));
+		$this->pusher->trigger($this->pusherChannel, 'endchat', $newtransport, null, false, true);
+		return array("success" => true);
+	}
 	public function authChat() {
 		if ($this->authstatus) {
 			$auth = true;

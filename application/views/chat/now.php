@@ -91,6 +91,11 @@ $chatuser = $chat->authChat();
 								location.reload(true);
 							}
 						});
+						channel.bind('endchat', function(data){
+							if (data.chatend) {
+								location.reload(true);
+							}
+						});
 						<?php
 						if ($chat->chatinfo['score']) {
 						?>
@@ -1548,7 +1553,20 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 						<?php
 						if ($chatuser['creator'] or $chatuser['superadmin']) {
 						?>
-						<button id="finish_chat">
+						<script type="text/javascript">
+							function finishchat() {
+								$.ajax({
+									url: '/chataction/<?php echo($chat->chatinfo['slug']) ?>/finish',
+									dataType: 'json',
+									type: 'POST',
+									data: postdata,
+									success: function(data) {
+										location.reload(true);	
+									}
+								});
+							}
+						</script>
+						<button id="finish_chat" onlick="finishcat()">
 							Finish Chat
 						</button>
 						<hr/>
