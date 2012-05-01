@@ -97,6 +97,15 @@ Class Chat {
 		$this->pusher->trigger($this->pusherChannel, 'madeadmin', $newtransport, null, false, true);
 		return array("success" => true);
 	}	
+	public function revokeAdmin($id) {
+		$adminsearch = $this->chatcoll->findOne(array("slug" => $this->chatinfo['slug']));
+		$admins = json_decode($adminsearch['admins'], true);
+		unset($admins[$id]);
+		$this->chatcoll->update(array("slug" => $this->chatinfo['slug']), array('$set' => array("admins" => json_encode($admins))));
+		$newtransport = json_encode(array("user_id" => $id));
+		$this->pusher->trigger($this->pusherChannel, 'revokedadmin', $newtransport, null, false, true);
+		return array("success" => true);
+	}
 	public function authChat() {
 		if ($this->authstatus) {
 			$auth = true;
