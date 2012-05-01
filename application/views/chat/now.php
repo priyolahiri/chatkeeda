@@ -1440,16 +1440,28 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 						<script language="JavaScript">
 						$(function() {
 							channel.bind('pusher:subscription_succeeded', function(members) {
-								var onlinetext = members.count + ' user(s) online';
+								online_members = online_members + members.count;
+								var onlinetext = online_members + ' user(s) online';
 								$('#online_contacts').append(onlinetext);
 								members.each(function(member) {
-									$('#contacts_window ul.window').append('<li class="well"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
+									$('#contacts_window ul.window').append('<li class="well" id="member_'+member.id+'"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
 								});
 							});
 							channel.bind('pusher:member_added', function(member) {
-								$('#contacts_window ul.window').append('<li class="well"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
+								online_members = online_members + 1;
+								var onlinetext = online_members + ' user(s) online';
+								$('#online_contacts').html(onlinetext);
+								$('#contacts_window ul.window').append('<li class="well" id="member_'+member.id+'"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
 							});
-						});	
+							channel.bind('pusher:member_removed', function(member) {
+								online_members = online_members + 1;
+								var onlinetext = online_members + ' user(s) online';
+								$('#online_contacts').html(onlinetext);
+  								var id = '#member_' + member.id;
+  								$(id).remove();
+							});
+						});
+						online_members = 0;	
 						</script>
 						<?php
 						 }
