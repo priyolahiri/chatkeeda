@@ -1454,7 +1454,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 								$('#contacts_window ul.window').append('<li class="well" id="member_'+member.id+'"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
 							});
 							channel.bind('pusher:member_removed', function(member) {
-								online_members = online_members + 1;
+								online_members = online_members - 1;
 								var onlinetext = online_members + ' user(s) online';
 								$('#online_contacts').html(onlinetext);
   								var id = '#member_' + member.id;
