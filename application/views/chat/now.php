@@ -51,8 +51,9 @@ $chatuser = $chat->authChat();
 					dataType: 'json',
 					success: function(data) {
 					console.log(data);
+					console.log(data.score);
 						if (data.score) {
-							$('#chatscore_label').html('Score: '+data.score);
+							$('#chatscore_label').html(data.score);
 						}
 					}
 				});
