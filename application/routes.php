@@ -100,7 +100,7 @@ Route::post('chataction/(:any)/(:any)', function($slug, $action) {
 				$msg.="<a href='$postimgcode' class='fancy_open'><img class='custom_post' src='$postimgcode' /></a><br/>";
 			}
 			if ($postvidsrc=='youtube') {
-				$msg.="<iframe width='320' height='240' src='http://".$_SERVER['HTTP_HOST']."/embed/$postvidcode' frameborder='0' allowfullscreen></iframe>";
+				$msg.="<iframe width='320' height='240' src='http://".$_SERVER['HTTP_HOST']."/embed/"."$postvidcode' frameborder='0' allowfullscreen></iframe>";
 			}
 			
 			if ($chatauth['superadmin'] or $chatauth['admin']) {
