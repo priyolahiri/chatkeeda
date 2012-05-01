@@ -1304,7 +1304,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 						<div class="clearfix"></div>
 						
 						<?php
-						if (($chatuser['admin'] or $chatuser['superadmin']) and $chat->chatinfo['live']) {
+						if (($chatuser['admin'] or $chatuser['superadmin'] or $chatuser['role'] == "normal") and $chat->chatinfo['live']) {
 						?>
 						<div class="well" id="comm_window">
 							<div style="width: 50%; clear: none; display: inline; float: left;">
@@ -1399,7 +1399,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 
 							</script>
 							<?php
-							if ($chat->chatinfo['score']) {
+							if ($chat->chatinfo['score'] and $chatuser['admin']) {
 							?>
 							<div style="width: 50%; clear: none; display: inline; float: right;">
 								<form id="submit_score" class="form-inline">
