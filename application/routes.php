@@ -47,7 +47,7 @@ Route::get('/embed/(:any)', function($vidid) {
 });
 Route::post('upload/(:any)', function($slug) {
 	$user = new User;
-	if($user->returnAuth()) {
+	if($user->returnStatus()) {
 			$imgupload = Input::file('imgupload');
 			$imguploadname = Input::file('imgupload.name');
 			$imguploadext = File::extension($imguploadname);

@@ -1366,7 +1366,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
                 	
                 							},
                 							error: function (data) {
-                    							alert(e);
+                    							alert("error occured!");
                 							}
             						});
         							return true;
