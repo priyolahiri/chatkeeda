@@ -1340,10 +1340,12 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 								<br>
 								<input type="text" name="vid_code" id="vid_code">
 							</form>
-							<div id="imgupload_div" style="display: none;">
+							<div style="display:none;">
+							<div id="imgupload_div">
 								<form>
 								<input type="file" id="imgupload" name="imgupload"><button class="small" onClick="ajaxFileUpload()">Upload</button><br/>
 								</form>
+							</div>
 							</div>
 							<script language="JavaScript">
 								$("a#upload_button").fancybox({
