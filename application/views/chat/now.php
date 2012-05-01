@@ -112,7 +112,7 @@ $chatuser = $chat->authChat();
 									});
 								}
 							});
-							channel.bind('chat', function(data){
+							channel.bind('newmodmsg', function(data){
 								$.ajax({
 									url: '/chataction/<?php echo($chat->chatinfo['slug']) ?>/getmodchat',
 									type: 'POST',
