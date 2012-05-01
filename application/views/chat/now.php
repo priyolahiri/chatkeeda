@@ -9,14 +9,21 @@ $chatuser = $chat->authChat();
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="/js/underscore.min.js"></script>
+		<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
+		<script type="text/javascript" src="/js/jquery.easing-1.3.pack.js"></script>
+		<script type="text/javascript" src="/js/jquery.mousewheel-3.0.4.pack.js"></script>
+		<script type="text/javascript" src="/js/jquery.prettyLoader.js"></script>
 		<script type="text/javascript" src="/js/jquery.noty.js"></script>
 		<script src="http://js.pusher.com/1.11/pusher.min.js" type="text/javascript"></script>
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/font-awesome.css" media="all" />
-		<link rel="stylesheet" type="text/css" href="/css/custom.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="/css/prettyLoader.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="/css/jquery.fancybox-1.3.4.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/jquery.noty.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="/css/custom.css" media="all" />
 		<script language="JavaScript">
 			$(function() {
+				$.prettyLoader();
 				$.ajax({
 					url: '/chataction/<?php echo($chat->chatinfo['slug']) ?>/getoldchat',
 					type: 'POST',
@@ -1332,6 +1339,36 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 								<br>
 								<input type="text" name="vid_code" id="vid_code">
 							</form>
+							<div id="imgupload_div" style="display: none;">
+								<form>
+								<input type="file" id="imgupload" name="imgupload"><button class="small" onClick="ajaxFileUpload()">Upload</button><br/>
+								</form>
+							</div>
+							<script language="JavaScript">
+								$("a#upload_button").fancybox({
+								});
+								function ajaxFileUpload() {
+									$.ajaxFileUpload({
+                							url:'/upload/<?php echo($chat->chatinfo['slug']); ?>',
+                							secureuri:false,
+                							fileElementId: 'imgupload',
+                							dataType: 'json',
+                							success: function (data) {
+                        						if (data.success) {
+                        							$.fancybox.close();
+                            						$('#img_code').attr('value', data.url);
+                        						} else {
+                        							alert('error occured!');
+                        						}
+                	
+                							},
+                							error: function (data) {
+                    							alert(e);
+                							}
+            						});
+        							return true;
+							}
+							</script>
 							</div>
 							<script language="javascript">
 
@@ -1372,7 +1409,6 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 								</form>
 							</div>
 							<script language="javascript">
-
 									$('#submit_score').submit(function(e) {
 										e.preventDefault();
 										var postdata = $('#submit_score').serialize();

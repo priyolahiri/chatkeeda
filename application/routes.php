@@ -34,6 +34,36 @@ Route::post('chatauth/(:any)', function($slug) {
 	error_log('chatauth');
 	return $pusher->presence_auth($_POST['channel_name'], $_POST['socket_id'], $presence_data['user_id'], $presence_data);
 });
+Route::get('/embed/(:any)', function($vidid) {
+	$url = "http://www.youtube.com/embed/$vidid";
+	$crl = curl_init();
+    $timeout = 5;
+    curl_setopt ($crl, CURLOPT_URL,$url);
+    curl_setopt ($crl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt ($crl, CURLOPT_CONNECTTIMEOUT, $timeout);
+    $ret = curl_exec($crl);
+    curl_close($crl);
+    return $ret;
+});
+Route::post('/upload/(:any)', function($slug) {
+	$user = new User;
+	if($user->returnAuth()) {
+			$imgupload = Input::file('imgupload');
+			$imguploadname = Input::file('imgupload.name');
+			$imguploadext = File::extension($imguploadname);
+			if(!file_exists($_SERVER{'DOCUMENT_ROOT'} ."/uploads/".$slug))  {
+				mkdir($_SERVER{'DOCUMENT_ROOT'} ."/uploads/".$slug, 0777,true);
+			}
+			$filename=uniqid().".".$imguploadext;
+			File::upload('imgupload', $_SERVER{'DOCUMENT_ROOT'} ."/uploads/".$chatslug."/".$socialauth->user_id."/".$filename);
+			return json_encode(array(
+				'url' => 'http://'.$_SERVER['HTTP_HOST']."/uploads".$chatslug."/".$socialauth->user_id."/".$filename,
+				'success' => TRUE
+			));
+	} else {
+		return json_encode(array("success"=>FALSE));
+	}		
+});
 Route::post('chataction/(:any)/(:any)', function($slug, $action) {
 	$chat = new Chat;
 	$chat->initChat($slug);
