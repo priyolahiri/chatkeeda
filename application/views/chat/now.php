@@ -1333,7 +1333,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 								<form id="submit_score" class="form-inline">
 									<label for="score_text">Score</label>
 									<br>
-									<input type="text" name="score_text" id="score_text" class="span3"><br/>
+									<input type="text" name="score_text" id="score_text" class="span3">
 									<button class="btn btn-success" type="submit">
 									Send
 									</button>
