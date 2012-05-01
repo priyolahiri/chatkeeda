@@ -143,6 +143,16 @@ Route::post('chataction/(:any)/(:any)', function($slug, $action) {
 		}
 	}
 	//end of sendscore action
+	
+	//start of getmodchat action//
+	if ($action == "getmodchat") {
+		if ($chatauth['admin'] or $chatauth['superadmin']) {
+			return json_encode($chat->getModChat());
+		} else {
+			return json_encode(array("success" => false, "msg" => "You don't have the priviledges to access moderation data.''"));
+		}
+	}
+	//end of getmodchat action
 });
 Event::listen('404', function()
 {

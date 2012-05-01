@@ -92,6 +92,49 @@ $chatuser = $chat->authChat();
 						<?php
 						}
 						?>
+						if (data.admin || data.superadmin) {
+							$.ajax({
+								url: '/chataction/<?php echo($chat->chatinfo['slug']) ?>/getmodchat',
+								type: 'POST',
+								dataType: 'json',
+								success: function(data) {
+									var co = 0;
+									_.each(data, function(oldmsg) {
+										var oldobj = jQuery.parseJSON(oldmsg);
+										co = co + 1;
+										var chattime = oldobj.timenow;
+										var chatmsg = oldobj.msg;
+										var memid = oldobj.key;
+										var output = '<li class="well"><span class="label label-success">'+chattime+'</span>&nbsp;&nbsp;'+chatmsg+'<button class="small green app_comment" onclick="approve('+co+')">approve</button>'+'</li>';
+										$('#approve_window ul.window').html(output);
+										var elem = document.getElementById('approve_window');
+										elem.scrollTop = elem.scrollHeight;
+									});
+								}
+							});
+							channel.bind('chat', function(data){
+								$.ajax({
+									url: '/chataction/<?php echo($chat->chatinfo['slug']) ?>/getmodchat',
+									type: 'POST',
+									dataType: 'json',
+									success: function(data) {
+										var co = 0;
+									_.each(data, function(oldmsg) {
+										var oldobj = jQuery.parseJSON(oldmsg);
+										co = co + 1;
+										var chattime = oldobj.timenow;
+										var chatmsg = oldobj.msg;
+										var memid = oldobj.key;
+										var output = '<li class="well"><span class="label label-success">'+chattime+'</span>&nbsp;&nbsp;'+chatmsg+'<button class="small green app_comment" onclick="approve('+co+')">approve</button>'+'</li>';
+										$('#approve_window ul.window').html(output);
+										var elem = document.getElementById('approve_window');
+										elem.scrollTop = elem.scrollHeight;
+									});
+								}
+									}
+								});
+							});
+						}
 					},
 					error: function(data) {
 						console.log(data);

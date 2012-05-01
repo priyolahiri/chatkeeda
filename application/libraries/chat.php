@@ -76,6 +76,9 @@ Class Chat {
 		}
 		$this->pusher->trigger($this->pusherChannel, 'score', $newtransport, null, false, true);
 	}
+	public function getModChat() {
+		return $this->modchatset->toArray(true);
+	}
 	public function authChat() {
 		if ($this->authstatus) {
 			$auth = true;
