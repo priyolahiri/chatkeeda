@@ -1343,7 +1343,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 							<div style="display:none;">
 							<div id="imgupload_div">
 								<form>
-								<input type="file" id="imgupload_file" name="imgupload"><a class="btn" onClick="ajaxFileUpload()">Upload</button><br/>
+								<input type="file" id="imgupload_file" name="imgupload"><a class="btn" onClick="ajaxFileUpload()">Upload</a><br/>
 								</form>
 							</div>
 							</div>
