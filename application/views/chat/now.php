@@ -1262,13 +1262,11 @@ url: '/chatnow/<?php echo($chat->chatinfo['slug']) ?>
 								</div>
 							</li>
 						</ul>
-						<script type="text/javascript">
-jQuery(".menulink").hover(function(){stringref=jQuery(this).children("a:first").attr("id")+'home';parentref=jQuery(this).closest('ul').attr("id");if(parentref=="menu"){jQuery('.tab:not(#'+stringref+')').hide();jQuery('.tab#'+stringref).show();}
+						<script type="text/javascript">jQuery(".menulink").hover(function(){stringref=jQuery(this).children("a:first").attr("id")+'home';parentref=jQuery(this).closest('ul').attr("id");if(parentref=="menu"){jQuery('.tab:not(#'+stringref+')').hide();jQuery('.tab#'+stringref).show();}
 return false;});jQuery("#menu a").mouseover(function(){stringref=jQuery(this).attr("id")+'home';parentref=jQuery(this).closest('ul').attr("id");if(parentref=="menu"){jQuery('.tab:not(#'+stringref+')').hide();jQuery('.tab#'+stringref).show();}
-return false;});jQuery(".tab:not(:first)").hide();jQuery(".tab:first").show();jQuery(".greybox a").click(function(){stringref=jQuery(this).attr("href").split('#')[1];jQuery('.tab:not(#'+stringref+')').hide();if(jQuery.browser.msie&amp;&amp;jQuery.browser.version.substr(0,3)=="6.0"){jQuery('.tab#'+stringref).show();}
+return false;});jQuery(".tab:not(:first)").hide();jQuery(".tab:first").show();jQuery(".greybox a").click(function(){stringref=jQuery(this).attr("href").split('#')[1];jQuery('.tab:not(#'+stringref+')').hide();if(jQuery.browser.msie&&jQuery.browser.version.substr(0,3)=="6.0"){jQuery('.tab#'+stringref).show();}
 else
-jQuery('.tab#'+stringref).fadeIn();return false;});
-						</script>
+jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 					</div>
 				</div>
 			</div>
