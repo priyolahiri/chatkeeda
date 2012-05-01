@@ -99,6 +99,7 @@ $chatuser = $chat->authChat();
 								dataType: 'json',
 								success: function(data) {
 									var co = 0;
+									$('#approve_window ul.window').html('');
 									_.each(data, function(oldmsg) {
 										var oldobj = jQuery.parseJSON(oldmsg);
 										co = co + 1;
@@ -106,13 +107,14 @@ $chatuser = $chat->authChat();
 										var chatmsg = oldobj.msg;
 										var memid = oldobj.key;
 										var output = '<li class="well"><span class="label label-success">'+chattime+'</span>&nbsp;&nbsp;'+chatmsg+'<button class="small green app_comment" onclick="approve('+co+')">approve</button>'+'</li>';
-										$('#approve_window ul.window').html(output);
+										$('#approve_window ul.window').append(output);
 										var elem = document.getElementById('approve_window');
 										elem.scrollTop = elem.scrollHeight;
 									});
 								}
 							});
 							channel.bind('newmodmsg', function(data){
+								$('#approve_window ul.window').html('');
 								$.ajax({
 									url: '/chataction/<?php echo($chat->chatinfo['slug']) ?>/getmodchat',
 									type: 'POST',
@@ -126,7 +128,7 @@ $chatuser = $chat->authChat();
 										var chatmsg = oldobj.msg;
 										var memid = oldobj.key;
 										var output = '<li class="well"><span class="label label-success">'+chattime+'</span>&nbsp;&nbsp;'+chatmsg+'<button class="small green app_comment" onclick="approve('+co+')">approve</button>'+'</li>';
-										$('#approve_window ul.window').html(output);
+										$('#approve_window ul.window').append(output);
 										var elem = document.getElementById('approve_window');
 										elem.scrollTop = elem.scrollHeight;
 									});
