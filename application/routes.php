@@ -194,7 +194,7 @@ Route::post('chataction/(:any)/(:any)', function($slug, $action) {
 	//end of revokeadmin section
 	
 	//start of finish chat section
-	if (action == "finish") {
+	if ($action == "finish") {
 		if ($chatauth['creator'] or $chatauth['superadmin']) {
 			return json_encode($chat->finishChat());
 		} else {
