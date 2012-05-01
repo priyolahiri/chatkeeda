@@ -17,61 +17,37 @@ $chatuser = $chat->authChat();
 		<link rel="stylesheet" type="text/css" href="/css/jquery.noty.css" media="all" />
 		<script language="JavaScript">
 			$(function() {
-chatInit();<?php
-if ($chat -> chatinfo['live']) {
-	echo "
-pusher = new Pusher('$chat->pusherKey');
-Pusher.channel_auth_endpoint = '/chatauth/$chat->chatslug';
-channel = pusher.subscribe('$chat->pusherChannel');
-";
-}
-?>
-	})
-function chatInit() {<?php
-if (!$chat->chatinfo['live']) {
-?><?php
-} else {
-?>
-	$.ajax({
-url: '/chatnow/<?php echo($chat->chatinfo['slug']) ?>
-	',
-	type: 'POST',
-	dataType: 'json',
-	success: function(data) {
-	console.log(data);
-	if (data.admin) {
-	channel.bind('pusher:subscription_succeeded', function(members) {
-	var onlinetext = members.count + ' user(s) online';
-	$('#online_contacts').append(onlinetext);
-	members.each(function(member) {
-	$('#contacts_window ul.window').append('<li class="well"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
-	});
-	});
-	channel.bind('pusher:member_added', function(member) {
-	$('#contacts_window ul.window').append('<li class="well"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
-	});
-	channel.bind('chat', function(data){
-	var chattime = data.timenow;
-	var chatmsg = data.msg;
-	var output = '<tr><td class="col-gray" width="8%">'+chattime+'</td>';
-	var output2 = '<td>'+chatmsg+'</td></tr>';
-	$('#chat_main_inner table tbody').append(output+output2);
-	var elem = document.getElementById('chat_main_inner');
-	elem.scrollTop = elem.scrollHeight;
-	});
-	}
-	},
-	error: function(data) {
-	console.log(data);
-	}
-	})
-<?php
-}
-?>
-	}
+				<?php
+					if ($chat -> chatinfo['live']) {
+					echo "
+					pusher = new Pusher('$chat->pusherKey');
+					Pusher.channel_auth_endpoint = '/chatauth/$chat->chatslug';
+					channel = pusher.subscribe('$chat->pusherChannel');
+					";
+				?>
+				$.ajax({
+					url: '/chatnow/<?php echo($chat->chatinfo['slug']) ?>',
+					type: 'POST',
+					dataType: 'json',
+					success: function(data) {
+						console.log(data);
+						channel.bind('chat', function(data){
+							var chattime = data.timenow;
+							var chatmsg = data.msg;
+							var output = '<tr><td class="col-gray" width="8%">'+chattime+'</td>';
+							var output2 = '<td>'+chatmsg+'</td></tr>';
+							$('#chat_main_inner table tbody').append(output+output2);
+								var elem = document.getElementById('chat_main_inner');
+								elem.scrollTop = elem.scrollHeight;
+							});
+						},
+					error: function(data) {
+						console.log(data);
+					}
+				})
+			});
 		</script>
-		<title>ChatKeeda | <?php echo ($chat->chatinfo['name'])
-			?></title>
+		<title>ChatKeeda | <?php echo ($chat->chatinfo['name']) ?></title>
 	</head>
 	<body>
 		<!-- Page Container Begin -->
@@ -1418,10 +1394,20 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 					<div id="sidebar_inner" class="well">
 						<a href="/logout" class="btn btn-primary">Logout</a>
 						<hr/>
+						
+						<?php
+						if ($chatuser['creator'] or $chatuser['superadmin']) {
+						?>
 						<button id="finish_chat">
 							Finish Chat
 						</button>
 						<hr/>
+						<?php
+						}
+						?>
+						<?php
+						 if ($chatuser['admin'] or $chatuser['superadmin']) {
+						?>
 						<p align="center">
 							<span id="online_contacts" class="label label-success"></span>
 						</p>
@@ -1432,6 +1418,24 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 						<div class="well" id="approve_window">
 							<ul class="window"></ul>
 						</div>
+						<script language="JavaScript">
+						$(function() {
+							channel.bind('pusher:subscription_succeeded', function(members) {
+								var onlinetext = members.count + ' user(s) online';
+								$('#online_contacts').append(onlinetext);
+								members.each(function(member) {
+									$('#contacts_window ul.window').append('<li class="well"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
+								});
+							});
+							channel.bind('pusher:member_added', function(member) {
+								$('#contacts_window ul.window').append('<li class="well"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
+							});
+						});	
+						</script>
+						<?php
+						 }
+						?>
+						
 					</div>
 				</div>
 				<!-- Sidebar End -->
