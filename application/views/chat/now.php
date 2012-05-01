@@ -1343,7 +1343,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 							<div style="display:none;">
 							<div id="imgupload_div">
 								<form>
-								<input type="file" id="imgupload" name="imgupload"><button class="small" onClick="ajaxFileUpload()">Upload</button><br/>
+								<input type="file" id="imgupload_file" name="imgupload"><a class="btn" onClick="ajaxFileUpload()">Upload</button><br/>
 								</form>
 							</div>
 							</div>
@@ -1354,7 +1354,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									$.ajaxFileUpload({
                 							url:'/upload/<?php echo($chat->chatinfo['slug']); ?>',
                 							secureuri:false,
-                							fileElementId: 'imgupload',
+                							fileElementId: 'imgupload_file',
                 							dataType: 'json',
                 							success: function (data) {
                         						if (data.success) {
@@ -1369,7 +1369,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
                     							alert(e);
                 							}
             						});
-        							return true;
+        							return false;
 							}
 							</script>
 							</div>
