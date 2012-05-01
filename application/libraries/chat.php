@@ -89,10 +89,10 @@ Class Chat {
 		return array("success" => true);
 	}
 	public function makeAdmin($id) {
-		$adminsearch = $this->chatcoll->findOne(array("slug" => $slug));
+		$adminsearch = $this->chatcoll->findOne(array("slug" => $this->chatinfo['slug']));
 		$admins = json_decode($adminsearch['admins'], true);
 		array_push($admins, $id);
-		$this->chatcoll->update(array("slug" => $slug), array("admins" => json_encode($admins)));
+		$this->chatcoll->update(array("slug" => $this->chatinfo['slug']), array("admins" => json_encode($admins)));
 		$newtransport = json_encode(array("user_id" => $id));
 		$this->pusher->trigger($this->pusherChannel, 'madeadmin', $newtransport, null, false, true);
 		return array("success" => true);
