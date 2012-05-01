@@ -25,7 +25,6 @@ $chatuser = $chat->authChat();
 		<script language="JavaScript">
 			$(function() {
 				$.prettyLoader();
-				$("a.fancy_open").fancybox();
 				$.ajax({
 					url: '/chataction/<?php echo($chat->chatinfo['slug']) ?>/getoldchat',
 					type: 'POST',
@@ -1624,6 +1623,9 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 			</div>
 			<!-- Footer End -->
 		</div>
+		<script language="JavaScript">
+			$("a.fancy_open").fancybox();
+		</script>
 		<!-- Page Container End -->
 	</body>
 </html>
