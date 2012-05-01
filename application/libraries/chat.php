@@ -79,6 +79,15 @@ Class Chat {
 	public function getModChat() {
 		return $this->modchatset->toArray(true);
 	}
+	public function approveMsg($id) {
+		$transport = json_decode($this->modchatset[$id]);
+		$timenow = date('H:i', time());
+		$newtransport = json_encode(array('timenow' => $timenow, 'msg' => $transport->msg));
+		$this->chatset[] = $newtransport;
+		$this->pusher->trigger($this->pusherChannel, 'chat', $newtransport, null, false, true);
+		$this->modchatset->remove(json_encode($transport));
+		return array("success" => true);
+	}	
 	public function authChat() {
 		if ($this->authstatus) {
 			$auth = true;

@@ -102,15 +102,15 @@ $chatuser = $chat->authChat();
 									$('#approve_window ul.window').html('');
 									_.each(data, function(oldmsg) {
 										var oldobj = jQuery.parseJSON(oldmsg);
-										co = co + 1;
 										var chattime = oldobj.timenow;
 										var chatmsg = oldobj.msg;
 										var memid = oldobj.key;
 										var output = '<li class="well"><span class="label label-success">'+chattime+'</span>&nbsp;&nbsp;'+chatmsg+'<button class="small green app_comment" onclick="approve('+co+')">approve</button>'+'</li>';
 										$('#approve_window ul.window').append(output);
-										var elem = document.getElementById('approve_window');
-										elem.scrollTop = elem.scrollHeight;
+										co = co + 1;
 									});
+									var elem = document.getElementById('approve_window');
+									elem.scrollTop = elem.scrollHeight;
 								}
 							});
 							channel.bind('newmodmsg', function(data){
@@ -123,15 +123,15 @@ $chatuser = $chat->authChat();
 										var co = 0;
 									_.each(data, function(oldmsg) {
 										var oldobj = jQuery.parseJSON(oldmsg);
-										co = co + 1;
 										var chattime = oldobj.timenow;
 										var chatmsg = oldobj.msg;
 										var memid = oldobj.key;
 										var output = '<li class="well"><span class="label label-success">'+chattime+'</span>&nbsp;&nbsp;'+chatmsg+'<button class="small green app_comment" onclick="approve('+co+')">approve</button>'+'</li>';
 										$('#approve_window ul.window').append(output);
-										var elem = document.getElementById('approve_window');
-										elem.scrollTop = elem.scrollHeight;
+										co = co + 1;	
 									});
+									var elem = document.getElementById('approve_window');
+									elem.scrollTop = elem.scrollHeight;
 									}
 								});
 							});
@@ -1456,7 +1456,6 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 							</script>
 							</div>
 							<script language="javascript">
-
 									$('#submit_chat').submit(function(e) {
 										e.preventDefault();
 										var postdata = $('#submit_chat').serialize();
@@ -1559,6 +1558,39 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 							<ul class="window"></ul>
 						</div>
 						<script language="JavaScript">
+						function approve(id) {
+							$.ajax({
+									url: '/chataction/<?php echo($chat->chatinfo['slug']) ?>/approve',
+									type: 'POST',
+									data: 'id='+id,
+									dataType: 'json',
+									success: function(data) {
+										if (data.success) {
+											noty({"text":"Coment approved!","layout":"topRight","type":"success","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+											$.ajax({
+								url: '/chataction/<?php echo($chat->chatinfo['slug']) ?>/getmodchat',
+								type: 'POST',
+								dataType: 'json',
+								success: function(data) {
+									var co = 0;
+									$('#approve_window ul.window').html('');
+									_.each(data, function(oldmsg) {
+										var oldobj = jQuery.parseJSON(oldmsg);
+										var chattime = oldobj.timenow;
+										var chatmsg = oldobj.msg;
+										var memid = oldobj.key;
+										var output = '<li class="well"><span class="label label-success">'+chattime+'</span>&nbsp;&nbsp;'+chatmsg+'<button class="small green app_comment" onclick="approve('+co+')">approve</button>'+'</li>';
+										$('#approve_window ul.window').append(output);
+										co = co + 1;
+									});
+									var elem = document.getElementById('approve_window');
+									elem.scrollTop = elem.scrollHeight;
+								}
+							});
+										}
+									}
+							});
+						}
 						$(function() {
 							channel.bind('pusher:subscription_succeeded', function(members) {
 								online_members = online_members + members.count;
