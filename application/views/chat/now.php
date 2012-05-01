@@ -46,22 +46,16 @@ $chatuser = $chat->authChat();
 				if ($chat->chatinfo['score']) {
 				?>
 				$.ajax({
-									url: '/chataction/<?php echo($chat->chatslug) ?>/getscore',
-									type: 'POST',
-									dataType: 'json',
-									success: function(data) {
-										console.log(data);
-										if (data.score) {
-											$('chatscore_label').html('Score: '+data.score);
-										}
-									}
-								});
-								channel.bind('score', function(data){
-									console.log(data);
-									if (data.score) {
-										$('chatscore_label').html('Score: '+data.score);
-									}
-								});
+					url: '/chataction/<?php echo($chat->chatslug) ?>/getscore',
+					type: 'POST',
+					dataType: 'json',
+					success: function(data) {
+					console.log(data);
+						if (data.score) {
+							$('chatscore_label').html('Score: '+data.score);
+						}
+					}
+				});
 				<?php
 				}
 					if ($chat -> chatinfo['live']) {
@@ -84,8 +78,20 @@ $chatuser = $chat->authChat();
 							$('#chat_window ul.window').append(output);
 							var elem = document.getElementById('chat_window');
 							elem.scrollTop = elem.scrollHeight;
-							});
-						},
+						});
+						<?php
+						if ($chat->chatinfo['score']) {
+						?>
+						channel.bind('score', function(data){
+							console.log(data);
+							if (data.score) {
+								$('chatscore_label').html('Score: '+data.score);
+							}
+						});
+						<?php
+						}
+						?>
+					},
 					error: function(data) {
 						console.log(data);
 					}
