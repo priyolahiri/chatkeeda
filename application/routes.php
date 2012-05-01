@@ -55,9 +55,9 @@ Route::post('upload/(:any)', function($slug) {
 				mkdir($_SERVER{'DOCUMENT_ROOT'} ."/uploads/".$slug, 0777,true);
 			}
 			$filename=uniqid().".".$imguploadext;
-			File::upload('imgupload', $_SERVER{'DOCUMENT_ROOT'} ."/uploads/".$chatslug."/".$socialauth->user_id."/".$filename);
+			Input::upload('imgupload', $_SERVER{'DOCUMENT_ROOT'} ."/uploads/".$slug."/".$filename);
 			return json_encode(array(
-				'url' => 'http://'.$_SERVER['HTTP_HOST']."/uploads".$chatslug."/".$socialauth->user_id."/".$filename,
+				'url' => 'http://'.$_SERVER['HTTP_HOST']."/uploads".$slug."/".$filename,
 				'success' => TRUE
 			));
 	} else {
