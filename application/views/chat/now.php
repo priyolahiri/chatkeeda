@@ -1389,7 +1389,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 						if (($chatuser['admin'] or $chatuser['superadmin'] or $chatuser['role'] == "normal") and $chat->chatinfo['live']) {
 						?>
 						<div class="well" id="comm_window">
-							<div style="width: 50%; clear: none; display: inline; float: left;">
+							<div style="width: 60%; clear: none; display: inline; float: left;">
 							<form enctype="multipart/form-data" id="submit_chat" class="form-inline">
 								<label for="chat_text">Text</label><br/>
 								<textarea name="chat_text" id="chat_text" class="span3"></textarea>
@@ -1482,7 +1482,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 							<?php
 							if ($chat->chatinfo['score'] and $chatuser['admin']) {
 							?>
-							<div style="width: 50%; clear: none; display: inline; float: right;">
+							<div style="width: 40%; clear: none; display: inline; float: right;">
 								<form id="submit_score" class="form-inline">
 									<label for="score_text">Score</label>
 									<br>
@@ -1599,7 +1599,20 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 								$('#online_contacts').append(onlinetext);
 								members.each(function(member) {
 									console.log(member);
-									$('#contacts_window ul.window').append('<li class="well" id="member_'+member.id+'"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
+									var addl = "";
+									<?php
+									if ($chatuser['creator']) {
+									?>
+									if (member.info.role == "normal" && member.info.admin == false && member.info.superadmin == false && member.id != membername) {
+										var addl = '<br/><button class="btn small" onlick=' + "'makeadmin("+'"'+member.id+'"'+")'>Make Admin</button>'";
+									}
+									if (member.info.role == "normal" && member.info.admin == true && member.info.superadmin == false && member.id != membername) {
+										var addl = '<br/><button class="btn small" onlick=' + "'revokeadmin("+'"'+member.id+'"'+")'>Revoke Admin</button>'";
+									}
+									<?php
+									}
+									?>
+									$('#contacts_window ul.window').append('<li class="well" id="member_'+member.id+'"><b>'+member.info.username+'</b><br/>'+member.info.role+addl+'</li>');
 								});
 							});
 							channel.bind('pusher:member_added', function(member) {
@@ -1607,7 +1620,20 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 								online_members = online_members + 1;
 								var onlinetext = online_members + ' user(s) online';
 								$('#online_contacts').html(onlinetext);
-								$('#contacts_window ul.window').append('<li class="well" id="member_'+member.id+'"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
+								var addl = "";
+									<?php
+									if ($chatuser['creator']) {
+									?>
+									if (member.info.role == "normal" && member.info.admin == false && member.info.superadmin == false && member.id != membername) {
+										var addl = '<br/><button class="btn small" onlick=' + "'makeadmin("+'"'+member.id+'"'+")'>Make Admin</button>'";
+									}
+									if (member.info.role == "normal" && member.info.admin == true && member.info.superadmin == false && member.id != membername) {
+										var addl = '<br/><button class="btn small" onlick=' + "'revokeadmin("+'"'+member.id+'"'+")'>Revoke Admin</button>'";
+									}
+									<?php
+									}
+									?>
+								$('#contacts_window ul.window').append('<li class="well" id="member_'+member.id+'"><b>'+member.info.username+'</b><br/>'+member.info.role+addl+'</li>');
 							});
 							channel.bind('pusher:member_removed', function(member) {
 								console.log('member removed' + member.id);
