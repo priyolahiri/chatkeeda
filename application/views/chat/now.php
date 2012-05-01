@@ -1483,6 +1483,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 								var onlinetext = online_members + ' user(s) online';
 								$('#online_contacts').append(onlinetext);
 								members.each(function(member) {
+									console.log(member);
 									$('#contacts_window ul.window').append('<li class="well" id="member_'+member.id+'"><b>'+member.info.username+'</b><br/>'+member.info.role+'</li>');
 								});
 							});
