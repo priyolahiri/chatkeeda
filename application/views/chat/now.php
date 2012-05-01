@@ -46,6 +46,9 @@ $chatuser = $chat->authChat();
 					}
 				})
 			});
+			<?php
+			}
+			?>
 		</script>
 		<title>ChatKeeda | <?php echo ($chat->chatinfo['name']) ?></title>
 	</head>
