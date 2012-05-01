@@ -45,7 +45,7 @@ Route::get('/embed/(:any)', function($vidid) {
     curl_close($crl);
     return $ret;
 });
-Route::post('/upload/(:any)', function($slug) {
+Route::post('upload/(:any)', function($slug) {
 	$user = new User;
 	if($user->returnAuth()) {
 			$imgupload = Input::file('imgupload');
