@@ -1315,7 +1315,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 							</form>
 							</div>
 							<script language="javascript">
-								$(function() {
+
 									$('#submit_chat').submit(function(e) {
 										e.preventDefault();
 										var postdata = $('#submit_chat').serialize();
@@ -1336,8 +1336,8 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 												}
 											}
 										})
-									})
-								});
+									});
+
 							</script>
 							<?php
 							if ($chat->chatinfo['score']) {
@@ -1353,7 +1353,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 								</form>
 							</div>
 							<script language="javascript">
-								$(function() {
+
 									$('#submit_score').submit(function(e) {
 										e.preventDefault();
 										var postdata = $('#submit_score').serialize();
@@ -1374,8 +1374,8 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 												}
 											}
 										})
-									})
-								});
+									});
+									
 							</script>
 							<?php
 							}
