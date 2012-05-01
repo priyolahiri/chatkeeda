@@ -164,6 +164,20 @@ Route::post('chataction/(:any)/(:any)', function($slug, $action) {
 		}
 	}
 	//end of approve action
+	
+	//start of makeadmin section
+	if ($action == "makeadmin") {
+		if ($chatauth['admin'] or $chatauth['superadmin']) {
+			$id= Input::get('id');
+			if ($id == $chat->userinfo['username']) {
+				return json_encode(array("success" => false, "msg" => "Can't make yourself admin'''"));
+			}
+			return json_encode($chat->makeAdmin($id));
+		} else {
+			return json_encode(array("success" => false, "msg" => "You don't have the priviledges to access moderation data.''"));
+		}
+	}
+	//end of makeadmin section
 });
 Event::listen('404', function()
 {

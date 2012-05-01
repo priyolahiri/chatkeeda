@@ -87,6 +87,15 @@ Class Chat {
 		$this->pusher->trigger($this->pusherChannel, 'chat', $newtransport, null, false, true);
 		$this->modchatset->remove(json_encode($transport));
 		return array("success" => true);
+	}
+	public function makeAdmin($id) {
+		$adminsearch = $this->chatcoll->findOne(array("slug" => $slug));
+		$admins = json_decode($adminsearch['admins'], true);
+		array_push($admins, $id);
+		$this->chatcoll->update(array("slug" => $slug), array("admins" => json_encode($admins)));
+		$newtransport = json_encode(array("user_id" => $id));
+		$this->pusher->trigger($this->pusherChannel, 'madeadmin', $newtransport, null, false, true);
+		return array("success" => true);
 	}	
 	public function authChat() {
 		if ($this->authstatus) {

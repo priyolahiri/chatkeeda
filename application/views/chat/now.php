@@ -81,6 +81,16 @@ $chatuser = $chat->authChat();
 							var elem = document.getElementById('chat_window');
 							elem.scrollTop = elem.scrollHeight;
 						});
+						channel.bind('madeadmin', function(data){
+							if (data.user_id == membername) {
+								location.reload(true);
+							}
+						});
+						channel.bind('revokedadmin', function(data){
+							if (data.user_id == membername) {
+								location.reload(true);
+							}
+						});
 						<?php
 						if ($chat->chatinfo['score']) {
 						?>
@@ -1593,6 +1603,28 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									}
 							});
 						}
+						function makeadmin(id) {
+							$.ajax({
+								url: '/chataction/<?php echo($chat->chatinfo['slug']) ?>/makeadmin',
+								type: 'POST',
+								dataType: 'json',
+								data: 'id='+id,
+								success: function(data) {
+									noty({"text":"Access granted!","layout":"topRight","type":"success","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+								}
+							});
+						}
+						function revokeadmin(id) {
+							$.ajax({
+								url: '/chataction/<?php echo($chat->chatinfo['slug']) ?>/revokeadmin',
+								type: 'POST',
+								dataType: 'json',
+								data: 'id='+id,
+								success: function(data) {
+									noty({"text":"Access granted!","layout":"topRight","type":"success","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+								}
+							});
+						}
 						$(function() {
 							channel.bind('pusher:subscription_succeeded', function(members) {
 								online_members = online_members + members.count;
@@ -1605,10 +1637,10 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									if ($chatuser['creator']) {
 									?>
 									if (member.info.role == "normal" && member.info.admin == false && member.info.superadmin == false && member.id != membername) {
-										var addl = '<br/><button class="btn btn-small" onclick=' + '"makeadmin('+"'"+member.id+"'"+"')"+'">Make Admin</button>';
+										var addl = '<br/><button class="btn btn-small" onclick=' + '"makeadmin('+"'"+member.id+"')"+'">Make Admin</button>';
 									}
 									if (member.info.role == "normal" && member.info.admin == true && member.info.superadmin == false && member.id != membername) {
-										var addl = '<br/><button class="btn btn-small" onclick=' + '"revokeadmin('+"'"+member.id+"'"+"')"+'">Revoke Admin</button>';
+										var addl = '<br/><button class="btn btn-small" onclick=' + '"revokeadmin('+"'"+member.id+"')"+'">Revoke Admin</button>';
 									}
 									<?php
 									}
@@ -1632,10 +1664,10 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									if ($chatuser['creator']) {
 									?>
 									if (member.info.role == "normal" && member.info.admin == false && member.info.superadmin == false && member.id != membername) {
-										var addl = '<br/><button class="btn btn-small" onclick=' + '"makeadmin('+"'"+member.id+"'"+"')"+'">Make Admin</button>';
+										var addl = '<br/><button class="btn btn-small" onclick=' + '"makeadmin('+"'"+member.id+"')"+'">Make Admin</button>';
 									}
 									if (member.info.role == "normal" && member.info.admin == true && member.info.superadmin == false && member.id != membername) {
-										var addl = '<br/><button class="btn btn-small" onclick=' + '"revokeadmin('+"'"+member.id+"'"+"')"+'">Revoke Admin</button>';
+										var addl = '<br/><button class="btn btn-small" onclick=' + '"revokeadmin('+"'"+member.id+"')"+'">Revoke Admin</button>';
 									}
 									<?php
 									}
