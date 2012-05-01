@@ -1605,16 +1605,16 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									if ($chatuser['creator']) {
 									?>
 									if (member.info.role == "normal" && member.info.admin == false && member.info.superadmin == false && member.id != membername) {
-										var addl = '<button class="btn btn-small" onclick=' + '"makeadmin('+"'"+member.id+"'"+"')"+'">Make Admin</button>';
+										var addl = '<br/><button class="btn btn-small" onclick=' + '"makeadmin('+"'"+member.id+"'"+"')"+'">Make Admin</button>';
 									}
 									if (member.info.role == "normal" && member.info.admin == true && member.info.superadmin == false && member.id != membername) {
-										var addl = '<button class="btn btn-small" onclick=' + '"revokeadmin('+"'"+member.id+"'"+"')"+'">Revoke Admin</button>';
+										var addl = '<br/><button class="btn btn-small" onclick=' + '"revokeadmin('+"'"+member.id+"'"+"')"+'">Revoke Admin</button>';
 									}
 									<?php
 									}
 									?>
 									var showrole = ""
-									if (member.admin || member.superadmin) {
+									if (member.info.admin || member.info.superadmin) {
 										showrole = "admin";
 									} else {
 										showrole = "normal";
@@ -1632,16 +1632,16 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									if ($chatuser['creator']) {
 									?>
 									if (member.info.role == "normal" && member.info.admin == false && member.info.superadmin == false && member.id != membername) {
-										var addl = '<button class="btn btn-small" onclick=' + '"makeadmin('+"'"+member.id+"'"+"')"+'">Make Admin</button>';
+										var addl = '<br/><button class="btn btn-small" onclick=' + '"makeadmin('+"'"+member.id+"'"+"')"+'">Make Admin</button>';
 									}
 									if (member.info.role == "normal" && member.info.admin == true && member.info.superadmin == false && member.id != membername) {
-										var addl = '<button class="btn btn-small" onclick=' + '"revokeadmin('+"'"+member.id+"'"+"')"+'">Revoke Admin</button>';
+										var addl = '<br/><button class="btn btn-small" onclick=' + '"revokeadmin('+"'"+member.id+"'"+"')"+'">Revoke Admin</button>';
 									}
 									<?php
 									}
 									?>
 									var showrole = ""
-									if (member.admin || member.superadmin) {
+									if (member.info.admin || member.info.superadmin) {
 										showrole = "admin";
 									} else {
 										showrole = "normal";
