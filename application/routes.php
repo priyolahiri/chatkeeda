@@ -97,7 +97,7 @@ Route::post('chataction/(:any)/(:any)', function($slug, $action) {
 				$msg.="<a href='http://yfrog.com/$postimgcode' target='_blank'><img src='http://yfrog.com/$postimgcode:small' /></a><br/>";
 			}
 			if ($postimgsrc=='upload') {
-				$msg.="<a href='$postimgcode' rel='fancybox'><img class='custom_post' src='$postimgcode' /></a><br/>";
+				$msg.="<a href='$postimgcode' class='fancy_open'><img class='custom_post' src='$postimgcode' /></a><br/>";
 			}
 			if ($postvidsrc=='youtube') {
 				$msg.="<iframe width='320' height='240' src='http://chatapp.priyolahiri.co.cc/embed/$postvidcode' frameborder='0' allowfullscreen></iframe>";
