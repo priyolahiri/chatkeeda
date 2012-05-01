@@ -157,7 +157,7 @@ Route::post('chataction/(:any)/(:any)', function($slug, $action) {
 	//start of approve action
 	if ($action == "getmodchat") {
 		if ($chatauth['admin'] or $chatauth['superadmin']) {
-			$id= Input::get($id);
+			$id= Input::get('id');
 			return json_encode($chat->approveMsg($id));
 		} else {
 			return json_encode(array("success" => false, "msg" => "You don't have the priviledges to access moderation data.''"));
