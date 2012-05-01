@@ -160,7 +160,7 @@ $chatuser = $chat->authChat();
 			});
 			<?php
 			} else {
-				echo ('}');
+				echo ('});');
 			}
 			?>
 		</script>
