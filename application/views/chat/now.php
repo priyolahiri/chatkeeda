@@ -1624,7 +1624,10 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 			<!-- Footer End -->
 		</div>
 		<script language="JavaScript">
+		$("#page").on("focusin", function(){
+
 			$("a.fancy_open").fancybox();
+		});
 		</script>
 		<!-- Page Container End -->
 	</body>
