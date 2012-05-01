@@ -159,6 +159,8 @@ $chatuser = $chat->authChat();
 				})
 			});
 			<?php
+			} else {
+				echo ('}');
 			}
 			?>
 		</script>
