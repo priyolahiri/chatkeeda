@@ -133,6 +133,9 @@ Route::post('chataction/(:any)/(:any)', function($slug, $action) {
 	if ($action == "sendscore") {
 		if ($chatauth['admin'] or $chatauth['superadmin']) {
 			$score = Input::get('score_text');
+			if (!$score or $score = "") {
+				return json_encode(array("success" => false, "msg" => "Score cannot be empty!"));
+			}
 			$chat->setScore($score);
 			return json_encode(array("success" => true, "msg" => "Score updated!"));
 		} else {

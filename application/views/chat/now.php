@@ -1312,12 +1312,14 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									type: 'GET',
 									dataType: 'json',
 									success: function(data) {
+										console.log(data);
 										if (data.score) {
 											$('chatscore_label').html('Score: '+data.score);
 										}
 									}
 								});
 								channel.bind('score', function(data){
+									console.log(data);
 									if (data.score) {
 										$('chatscore_label').html('Score: '+data.score);
 									}
