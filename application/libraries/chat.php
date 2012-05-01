@@ -61,6 +61,13 @@ Class Chat {
 	public function getChat() {
 		return $this->chatset->toArray(true);
 	}
+	public function getScore() {
+		if (isset($this->chatscore[0])) {
+			return $this->chatscore[0];
+		} else {
+		 	return array();
+		}
+	}
 	public function authChat() {
 		if ($this->authstatus) {
 			$auth = true;

@@ -116,9 +116,18 @@ Route::post('chataction/(:any)/(:any)', function($slug, $action) {
 		}
   	}
 	//end of sendchat action
+	
+	//start of getchat action
 	if ($action=="getoldchat") {
 		return json_encode($chat->getChat());
 	}
+	//end of getchat action
+	
+	//start of getscore function
+	if ($action=="getscore") {
+		return json_encode($chat->getScore());
+	}
+	//end of getscore function
 });
 Event::listen('404', function()
 {

@@ -1298,6 +1298,35 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 						<h2><?php echo ($chat->chatinfo['name'])
 						?></h2>
 						<hr/>
+						<?php
+						if ($chat->chatinfo['score']) {
+						?>
+						<div class="well" id="score_window">
+							<h6>Score</h6><hr/>
+							<span class="label label-warning" id="chatscore_label">None added yet</span>
+						</div>
+						<script language="javascript">
+							$(function() {
+								$.ajax({
+									url: '/chataction/<?php echo($chat->chatslug) ?>/getscore',
+									type: 'GET',
+									dataType: 'json',
+									success: function(data) {
+										if (data.score) {
+											$('chatscore_label').html('Score: '+data.score);
+										}
+									}
+								});
+								channel.bind('score', function(data){
+									if (data.score) {
+										$('chatscore_label').html('Score: '+data.score);
+									}
+								});
+							});
+						</script>
+						<?
+						}
+						?>
 						<div class="well" id="chat_window">
 							<ul class="window"></ul>
 						</div>
