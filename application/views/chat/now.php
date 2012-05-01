@@ -1621,7 +1621,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 								dataType: 'json',
 								data: 'id='+id,
 								success: function(data) {
-									noty({"text":"Access granted!","layout":"topRight","type":"success","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+									noty({"text":"Access revoked!","layout":"topRight","type":"success","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
 								}
 							});
 						}

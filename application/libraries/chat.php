@@ -100,7 +100,10 @@ Class Chat {
 	public function revokeAdmin($id) {
 		$adminsearch = $this->chatcoll->findOne(array("slug" => $this->chatinfo['slug']));
 		$admins = json_decode($adminsearch['admins'], true);
-		unset($admins[$id]);
+		$key = array_search($id,$admins);
+		if(isset($key)){
+    			unset($admins[$key]);
+		}
 		$this->chatcoll->update(array("slug" => $this->chatinfo['slug']), array('$set' => array("admins" => json_encode($admins))));
 		$newtransport = json_encode(array("user_id" => $id));
 		$this->pusher->trigger($this->pusherChannel, 'revokedadmin', $newtransport, null, false, true);
