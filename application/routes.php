@@ -102,6 +102,7 @@ Route::post('chataction/(:any)/(:any)', function($slug, $action) {
 			if ($postvidsrc=='youtube') {
 				$msg.="<iframe width='320' height='240' src='http://".$_SERVER['HTTP_HOST']."/embed/$postvidcode' frameborder='0' allowfullscreen></iframe>";
 			}
+			
 			if ($chatauth['superadmin'] or $chatauth['admin']) {
 				$chat->addMsg($msg);
 				$post_status = "Message Posted";
