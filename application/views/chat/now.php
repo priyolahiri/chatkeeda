@@ -1565,6 +1565,7 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									data: 'id='+id,
 									dataType: 'json',
 									success: function(data) {
+										console.log(data);
 										if (data.success) {
 											noty({"text":"Coment approved!","layout":"topRight","type":"success","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
 											$.ajax({
