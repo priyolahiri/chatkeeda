@@ -1,3 +1,6 @@
+<?php
+$chatuser = $chat->authChat();
+?>
 <!doctype html>
 <html>
 	<head>
@@ -1294,6 +1297,10 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 							<ul class="window"></ul>
 						</div>
 						<div class="clearfix"></div>
+						
+						<?php
+						if ($chatuser['admin'] or $chatuser['superadmin']) {
+						?>
 						<div class="well" id="comm_window">
 							<div style="width: 50%; clear: none; display: inline; float: left;">
 							<form enctype="multipart/form-data" id="submit_chat" class="form-inline">
@@ -1329,6 +1336,9 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 								<input type="text" name="vid_code" id="vid_code">
 							</form>
 							</div>
+							<?php
+							if ($chat->chatinfo['score']) {
+							?>
 							<div style="width: 50%; clear: none; display: inline; float: right;">
 								<form id="submit_score" class="form-inline">
 									<label for="score_text">Score</label>
@@ -1339,8 +1349,14 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 									</button>
 								</form>
 							</div>
+							<?php
+							}
+							?>
 							<div class="clearfix"></div>
 						</div>
+						<?php
+						}
+						?>
 					</div>
 					<!-- Content Inner End -->
 				</div>
