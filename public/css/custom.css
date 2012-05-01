@@ -396,3 +396,6 @@ ul.window li {
     position: relative;
     z-index: 10;
 }
+img.custom_post {
+	max-width: 300px;
+}
