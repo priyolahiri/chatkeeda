@@ -17,6 +17,21 @@ $chatuser = $chat->authChat();
 		<link rel="stylesheet" type="text/css" href="/css/jquery.noty.css" media="all" />
 		<script language="JavaScript">
 			$(function() {
+				$.ajax({
+					url: '/chataction/<?php echo($chat->chatinfo['slug']) ?>/getoldchat',
+					type: 'POST',
+					dataType: 'json',
+					success: function(data) {
+						_.each(data, function(oldchat) {
+							var chattime = oldchat.timenow;
+							var chatmsg = oldchat.msg;
+							var output = '<li class="well"><span class="label label-success">'+chattime+'</span>&nbsp;&nbsp;'+chatmsg+'</li>';
+							$('#chat_window ul.window').append(output);
+						});
+						var elem = document.getElementById('chat_window');
+						elem.scrollTop = elem.scrollHeight;
+					}
+				});
 				<?php
 					if ($chat -> chatinfo['live']) {
 					echo "
@@ -34,7 +49,7 @@ $chatuser = $chat->authChat();
 						channel.bind('chat', function(data){
 							var chattime = data.timenow;
 							var chatmsg = data.msg;
-							var output = '<li class="well"><span class="label label-success">'+chattime+'</span>'+chatmsg+'</li>';
+							var output = '<li class="well"><span class="label label-success">'+chattime+'</span>&nbsp;&nbsp;'+chatmsg+'</li>';
 							$('#chat_window ul.window').append(output);
 							var elem = document.getElementById('chat_window');
 							elem.scrollTop = elem.scrollHeight;
