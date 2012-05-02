@@ -16,10 +16,12 @@ Route::get('logout', function() {
 	return Redirect::to('/')->with('success', 'Successfully logged out!');
 });
 Route::get('chatnow/(:any)', function($slug) {
+	$success = Session::get('success');
+	$error = Session::get('error');
 	$chat = new Chat;
 	$chat->initChat($slug);
 	$user = new User;
-	return View::make('chat.now')->with('chat', $chat)->with('user', $user);
+	return View::make('chat.now')->with('chat', $chat)->with('user', $user)->with('error', $error)->with('success', $success);
 });
 Route::post('chatnow/(:any)', function($slug) {
 	$chat = new Chat;
