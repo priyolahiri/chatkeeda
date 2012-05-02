@@ -77,6 +77,10 @@ Class Register_Controller extends Base_Controller {
 							"Registration Error",
 							"An error prevented the registration. Please try again later."
 							);
+		$user = new User;
+		if ($user->returnStatus) {
+			return Redirect::to('home.index');	
+		}
 		return View::make('register.index')->with('regform', $regform)->with('error', $error)->with('success', $success);
 	}
 	public function action_create() {

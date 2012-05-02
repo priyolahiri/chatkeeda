@@ -1549,7 +1549,54 @@ jQuery('.tab#'+stringref).fadeIn();return false;});</script>
 				<!-- Sidebar Begin -->
 				<div class="span3" id="sidebar">
 					<div id="sidebar_inner" class="well">
+						<?php
+if (!$user->authstatus) {
+						?>
+						<form method="post" action="/login">
+							<div class="control-group">
+								<label class="control-label" for="username">Username/Nickname</label>
+								<div class="input-prepend">
+									<span class="add-on"><i class="icon-user"></i></span>
+									<input type="text" id="username" name="username" class="span2">
+								</div>
+								<label class="control-label" for="password">Password</label>
+								<div class="input-prepend">
+									<span class="add-on"><i class="icon-lock"></i></span>
+									<input type="password" id="password" name="password" class="span2">
+								</div>
+							</div>
+							<button class="btn btn-success" type="submit">
+								<i class="icon-home icon-white"></i>Login
+							</button>
+							<a class="btn btn-primary" href="/register" type="submit"><i class="icon-pencil icon-white"></i>Register</a>
+							<br/>
+							<br/>
+							<?php
+if ($error) {
+							?>
+							<div class="alert alert-error">
+								<?php echo($error); ?>
+							</div>
+							<?php
+							}
+							?>
+							<?php
+if ($success) {
+							?>
+							<div class="alert alert-success">
+								<?php echo($success); ?>
+							</div>
+							<?php
+							}
+							?>
+						</form>
+						<?php
+						} else {
+						?>
 						<a href="/logout" class="btn btn-primary">Logout</a>
+						<?php
+						}
+						?>
 						<hr/>
 						
 						<?php
