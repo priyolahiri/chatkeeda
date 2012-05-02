@@ -18,7 +18,8 @@ Route::get('logout', function() {
 Route::get('chatnow/(:any)', function($slug) {
 	$chat = new Chat;
 	$chat->initChat($slug);
-	return View::make('chat.now')->with('chat', $chat);
+	$user = new User;
+	return View::make('chat.now')->with('chat', $chat)->with('user', $user);
 });
 Route::post('chatnow/(:any)', function($slug) {
 	$chat = new Chat;

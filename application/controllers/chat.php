@@ -36,17 +36,19 @@ Class Chat_Controller extends Base_Controller {
 		return Redirect::to('/chat/new')->with('success', "The chat was created.<br/><a href='/chatnow/".Str::slug(Input::get('chat_name'))."' class='btn btn-primary'>Chat Now</a>");
 	}
 	public function action_running() {
+		$user = new User;
 		$success = Session::get('success');
 		$error = Session::get('error');
 		$chat = new Chat;
 		$list = $chat->listChats();
-		return View::make('chat.list')->with('success', $success)->with('error', $error)->with('list', $list)->with('key', 'Running');
+		return View::make('chat.list')->with('success', $success)->with('error', $error)->with('list', $list)->with('key', 'Running')->with('user', $user);
 	}
 	public function action_closed() {
+		$user = new User;
 		$success = Session::get('success');
 		$error = Session::get('error');
 		$chat = new Chat;
 		$list = $chat->listChats(FALSE);
-		return View::make('chat.list')->with('success', $success)->with('error', $error)->with('list', $list)->with('key', 'Closed');
+		return View::make('chat.list')->with('success', $success)->with('error', $error)->with('list', $list)->with('key', 'Closed')->with('user', $user);
 	}
 }
